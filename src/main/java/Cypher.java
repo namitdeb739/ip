@@ -14,6 +14,9 @@ public class Cypher {
         System.out.println("What can I do for you?");
         System.out.println("____________________");
 
+        String[] list = new String[100];
+        int i = 0;
+
         Scanner scanner = new Scanner(System.in);
         String input;
 
@@ -22,10 +25,19 @@ public class Cypher {
             switch (input) {
             case "bye":
                 break;
+            case "list":
+                System.out.println("____________________");
+                for (int j = 0; j < i; j++) {
+                    System.out.println((j + 1) + ". " + list[j]);
+                }
+                System.out.println("____________________");
+                break;
             default:
                 System.out.println("____________________");
-                System.out.println(input);
+                System.out.println("Added: " + input);
                 System.out.println("____________________");
+                list[i] = input;
+                i++;
                 break;
             }
         } while (!input.equals("bye"));
