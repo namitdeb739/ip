@@ -53,6 +53,8 @@ public class Cypher {
                 tasks[taskCount++] = new Todo(taskDescription);
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks[taskCount - 1]);
+                System.out.println(
+                        "Now you have " + taskCount + " tasks in the list.");
                 break;
             case "deadline":
                 taskDescription = input.split(" ")[1];
@@ -61,6 +63,8 @@ public class Cypher {
                 tasks[taskCount++] = new Deadline(taskDescription, by);
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks[taskCount - 1]);
+                System.out.println(
+                        "Now you have " + taskCount + " tasks in the list.");
                 break;
             case "event":
                 taskDescription = input.split(" ")[1];
@@ -71,10 +75,11 @@ public class Cypher {
                 tasks[taskCount++] = new Event(taskDescription, from, to);
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks[taskCount - 1]);
+                System.out.println(
+                        "Now you have " + taskCount + " tasks in the list.");
                 break;
             }
-            System.out.println(
-                    "Now you have " + taskCount + " tasks in the list.");
+
             System.out.println("____________________");
         } while (!input.equals("bye"));
 

@@ -1,0 +1,9 @@
+todo Run
+deadline Homework /by 24/01/25 16:00
+event Dinner /from 22/01/25 /to 24/01/25
+list
+mark 1
+mark 2
+unmark 1
+list
+bye
