@@ -25,31 +25,31 @@ public class Cypher {
                 if (input.trim().isEmpty()) {
                     throw new EmptyInputException();
                 }
-                String command = input.split(" ")[0];
+                Command command = Command.fromString(input.split(" ")[0]);
 
                 switch (command) {
-                case "bye":
+                case BYE:
                     handleBye();
                     break;
-                case "list":
+                case LIST:
                     handleList();
                     break;
-                case "mark":
+                case MARK:
                     handleMark(input);
                     break;
-                case "unmark":
+                case UNMARK:
                     handleUnmark(input);
                     break;
-                case "todo":
+                case TODO:
                     handleTodo(input);
                     break;
-                case "deadline":
+                case DEADLINE:
                     handleDeadline(input);
                     break;
-                case "event":
+                case EVENT:
                     handleEvent(input);
                     break;
-                case "delete":
+                case DELETE:
                     handleDelete(input);
                     break;
                 default:
