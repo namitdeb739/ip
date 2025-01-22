@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Represents the main class of the Cypher chatbot.
- * The chatbot can manage tasks, including todos, deadlines, and events.
+ * Represents the main class of the Cypher chatbot. The chatbot can manage
+ * tasks, including todos, deadlines, and events.
  */
 public class Cypher {
     private static final String logo = ""
@@ -16,9 +16,9 @@ public class Cypher {
     private static ArrayList<Task> tasks = new ArrayList<Task>();
 
     /**
-     * Represents the main method of the chatbot.
-     * The chatbot will greet the user and prompt for commands.
-     * The chatbot will continue to prompt for commands until the user types "bye".
+     * Represents the main method of the chatbot. The chatbot will greet the
+     * user and prompt for commands. The chatbot will continue to prompt for
+     * commands until the user types "bye".
      *
      * @param args The command line arguments.
      */
@@ -87,7 +87,6 @@ public class Cypher {
         scanner.close();
     }
 
-    
     private static void greet() {
         System.out.println("Hello, I'm \n" + Cypher.logo);
         System.out.println("What can I do for you?");
