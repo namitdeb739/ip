@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cypher {
@@ -8,8 +9,7 @@ public class Cypher {
             + "██║       ╚██╔╝  ██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗\n"
             + "╚██████╗   ██║   ██║     ██║  ██║███████╗██║  ██║\n"
             + "╚═════╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n";
-    private static Task[] tasks = new Task[100];
-    private static int taskCount = 0;
+    private static ArrayList<Task> tasks = new ArrayList<Task>();
 
     public static void main(String[] args) {
         printDivider();
@@ -49,6 +49,9 @@ public class Cypher {
                 case "event":
                     handleEvent(input);
                     break;
+                case "delete":
+                    handleDelete(input);
+                    break;
                 default:
                     System.out.println("Unknown command: " + command);
                     break;
@@ -57,13 +60,15 @@ public class Cypher {
                 printDivider();
             } catch (EmptyInputException e) {
                 System.out.println(e.getMessage());
-                System.out.println("Please enter a valid command.");
+                System.out.println("Please enter a command.");
             } catch (MissingFieldException e) {
                 System.out.println(e.getMessage());
-                System.out.println("Please enter a valid command.");
+                System.out.println(
+                        "Please enter your command with all required fields.");
             } catch (TaskNotFoundException e) {
                 System.out.println(e.getMessage());
-                System.out.println("Please enter a valid command.");
+                System.out.println(
+                        "Total number of tasks: " + Cypher.tasks.size());
             }
 
         } while (!input.equals("bye"));
@@ -85,35 +90,35 @@ public class Cypher {
     }
 
     private static void handleList() {
-        for (int i = 0; i < Cypher.taskCount; i++) {
-            System.out.println((i + 1) + ". " + Cypher.tasks[i]);
+        for (int i = 0; i < Cypher.tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + Cypher.tasks.get(i));
         }
     }
 
     private static void handleMark(String input) throws TaskNotFoundException {
         int taskIndex = Integer.parseInt(input.split(" ")[1]) - 1;
 
-        if (taskIndex >= Cypher.taskCount || taskIndex < 0) {
+        if (taskIndex >= Cypher.tasks.size() || taskIndex < 0) {
             throw new TaskNotFoundException(taskIndex + 1);
         }
 
-        Cypher.tasks[taskIndex].markAsDone();
+        Cypher.tasks.get(taskIndex).markAsDone();
 
         System.out.println("Nice! I've marked this task as done:");
-        System.out.println(Cypher.tasks[taskIndex]);
+        System.out.println(Cypher.tasks.get(taskIndex));
     }
 
     private static void handleUnmark(String input)
             throws TaskNotFoundException {
         int taskIndex = Integer.parseInt(input.split(" ")[1]) - 1;
 
-        if (taskIndex >= Cypher.taskCount || taskIndex < 0) {
+        if (taskIndex >= Cypher.tasks.size() || taskIndex < 0) {
             throw new TaskNotFoundException(taskIndex + 1);
         }
-        Cypher.tasks[taskIndex].unmarkAsDone();
+        Cypher.tasks.get(taskIndex).unmarkAsDone();
 
         System.out.println("Nice! I've unmarked this task as done:");
-        System.out.println(Cypher.tasks[taskIndex]);
+        System.out.println(Cypher.tasks.get(taskIndex));
     }
 
     private static void handleTodo(String input) throws MissingFieldException {
@@ -123,12 +128,12 @@ public class Cypher {
             throw new MissingFieldException("description");
         }
 
-        Cypher.tasks[Cypher.taskCount++] = new Todo(taskDescription);
+        Cypher.tasks.add(new Todo(taskDescription));
 
         System.out.println("Got it. I've added this task:");
-        System.out.println(Cypher.tasks[Cypher.taskCount - 1]);
+        System.out.println(Cypher.tasks.get(Cypher.tasks.size() - 1));
         System.out.println(
-                "Now you have " + Cypher.taskCount + " tasks in the list.");
+                "Now you have " + Cypher.tasks.size() + " tasks in the list.");
     }
 
     private static void handleDeadline(String input)
@@ -151,12 +156,12 @@ public class Cypher {
             throw new MissingFieldException("description");
         }
 
-        Cypher.tasks[Cypher.taskCount++] = new Deadline(taskDescription, by);
+        Cypher.tasks.add(new Deadline(taskDescription, by));
 
         System.out.println("Got it. I've added this task:");
-        System.out.println(Cypher.tasks[Cypher.taskCount - 1]);
+        System.out.println(Cypher.tasks.get(Cypher.tasks.size() - 1));
         System.out.println(
-                "Now you have " + Cypher.taskCount + " tasks in the list.");
+                "Now you have " + Cypher.tasks.size() + " tasks in the list.");
     }
 
     private static void handleEvent(String input) throws MissingFieldException {
@@ -185,11 +190,27 @@ public class Cypher {
             throw new MissingFieldException("description");
         }
 
-        Cypher.tasks[Cypher.taskCount++] = new Event(taskDescription, from, to);
+        Cypher.tasks.add(new Event(taskDescription, from, to));
 
         System.out.println("Got it. I've added this task:");
-        System.out.println(Cypher.tasks[Cypher.taskCount - 1]);
+        System.out.println(Cypher.tasks.get(Cypher.tasks.size() - 1));
         System.out.println(
-                "Now you have " + Cypher.taskCount + " tasks in the list.");
+                "Now you have " + Cypher.tasks.size() + " tasks in the list.");
+    }
+
+    private static void handleDelete(String input)
+            throws TaskNotFoundException {
+        int taskIndex = Integer.parseInt(input.split(" ")[1]) - 1;
+
+        if (taskIndex >= Cypher.tasks.size() || taskIndex < 0) {
+            throw new TaskNotFoundException(taskIndex + 1);
+        }
+
+        Task task = Cypher.tasks.remove(taskIndex);
+
+        System.out.println("Noted. I've removed this task:");
+        System.out.println(task);
+        System.out.println(
+                "Now you have " + Cypher.tasks.size() + " tasks in the list.");
     }
 }
