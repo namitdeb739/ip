@@ -27,4 +27,17 @@ public class Deadline extends Task {
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by + ")";
     }
+
+    /**
+     * Returns the string representation of the deadline in the format to be
+     * saved in a file.
+     *
+     * @return The string representation of the deadline in the format to be
+     *         saved in a file.
+     */
+    @Override
+    public String toFileString() {
+        return "D | " + (this.isDone ? "1" : "0") + " | " + this.description
+                + " | " + this.by;
+    }
 }

@@ -6,6 +6,6 @@ class EmptyInputException extends Exception {
      * Constructs an EmptyInputException with a default message.
      */
     public EmptyInputException() {
-        super("The input cannot be empty.");
+        super("Excuse me, sir. Might I inquire what's going on? You seem to be requesting me to do nothing.");
     }
 }

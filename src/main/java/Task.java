@@ -2,7 +2,7 @@
  * Represents a task with a description and a status indicating whether it is
  * done.
  */
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -51,4 +51,6 @@ public class Task {
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
+
+    public abstract String toFileString();
 }

@@ -8,6 +8,6 @@ public class TaskNotFoundException extends Exception {
      * @param taskNumber The task number that is missing.
      */
     public TaskNotFoundException(int taskNumber) {
-        super("Task " + taskNumber + " not found.");
+        super("It appears that the task number " + taskNumber + " is missing.");
     }
 }

@@ -28,4 +28,17 @@ public class Event extends Task {
     public String toString() {
         return "[E]" + super.toString() + " (at: " + from + " to " + to + ")";
     }
+
+    /**
+     * Returns the string representation of the event in the format to be saved
+     * in a file.
+     *
+     * @return The string representation of the event in the format to be saved
+     *         in a file.
+     */
+    @Override
+    public String toFileString() {
+        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | "
+                + this.from + " | " + this.to;
+    }
 }

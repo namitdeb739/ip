@@ -21,4 +21,16 @@ public class Todo extends Task {
     public String toString() {
         return "[T]" + super.toString();
     }
+
+    /**
+     * Returns the string representation of the todo in the format to be saved in a
+     * file.
+     * 
+     * @return The string representation of the todo in the format to be saved in a
+     *         file.
+     */
+    @Override
+    public String toFileString() {
+        return "T | " + (this.isDone ? "1" : "0") + " | " + this.description;
+    }
 }
