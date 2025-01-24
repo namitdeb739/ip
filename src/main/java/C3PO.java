@@ -325,7 +325,7 @@ public class C3PO {
                     "I'm afraid I cannot do that, sir. It appears my security clearance is insufficient.");
         }
 
-        System.out.println("I have saved your tasks, sir.");
+        System.out.println("Hooray! I have saved your tasks, sir.");
         C3PO.list();
     }
 }
