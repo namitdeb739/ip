@@ -1,9 +1,12 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents an event with a description and a time.
  */
 public class Event extends Task {
-    protected String from;
-    protected String to;
+    protected LocalDateTime from;
+    protected LocalDateTime to;
 
     /**
      * Constructs an Event with the specified description and time.
@@ -12,7 +15,7 @@ public class Event extends Task {
      * @param from        The start time of the event.
      * @param to          The end time of the event.
      */
-    public Event(String description, String from, String to) {
+    public Event(String description, LocalDateTime from, LocalDateTime to) {
         super(description);
         this.from = from;
         this.to = to;
@@ -26,7 +29,12 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + from + " to " + to + ")";
+        return "[E]" + super.toString() + " (on: "
+                + this.from.format(
+                        DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm"))
+                + " to " + this.to.format(
+                        DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm"))
+                + ")";
     }
 
     /**
@@ -38,7 +46,7 @@ public class Event extends Task {
      */
     @Override
     public String toFileString() {
-        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | "
-                + this.from + " | " + this.to;
+        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description
+                + " | " + this.from + " | " + this.to;
     }
 }

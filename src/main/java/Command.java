@@ -2,15 +2,7 @@
  * Represents the command that the user inputs.
  */
 public enum Command {
-    BYE,
-    LIST,
-    MARK,
-    UNMARK,
-    TODO,
-    DEADLINE,
-    EVENT,
-    DELETE,
-    UNKNOWN;
+    BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, UNKNOWN;
 
     /**
      * Returns the Command enum value corresponding to the specified string.
@@ -24,5 +16,10 @@ public enum Command {
         } catch (IllegalArgumentException e) {
             return UNKNOWN;
         }
+    }
+
+    public boolean requiresDescription() {
+        return this == TODO || this == DEADLINE || this == EVENT || this == MARK
+                || this == DELETE;
     }
 }

@@ -1,42 +1,111 @@
 ____________________
-Hello, I'm 
- ██████╗██╗   ██╗██████╗ ██╗  ██╗███████╗██████╗
-██╔════╝╚██╗ ██╔╝██╔══██╗██║  ██║██╔════╝██╔══██╗
-██║      ╚████╔╝ ██████╔╝███████║█████╗  ██████╔╝
-██║       ╚██╔╝  ██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗
-╚██████╗   ██║   ██║     ██║  ██║███████╗██║  ██║
-╚═════╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+            .-.
+           |o,o|
+        ,| _\=/_      .-''-.
+        ||/_/_\_\    /[] _ _\
+        |_/|(_)|\  _|_o_LII|_
+           \._./// / | ==== | \
+           |\_/|'` |_| ==== |_|
+           |_|_|    ||' ||  ||
+           |-|-|    ||LI  o ||
+           |_|_|    ||'----'||
+          /_/ \_\  /__|    |__\n
+Hello, I am C-3PO, human-cyborg relations.
+I am fluent in over six million forms of communication.
 
-What can I do for you?
+2025-01-31T23:59
+Here are your pending tasks, sir:
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+
+How may I assist you today?
 ____________________
-Got it. I've added this task:
-[T][ ] Run
-Now you have 1 tasks in the list.
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
 ____________________
-Got it. I've added this task:
-[D][ ] Homework (by: 24/01/25)
+Excuse me, sir. Might I inquire what's going on? You seem to be requesting me to do nothing.
+Please enter a command.
+____________________
+Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:
+[E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
 Now you have 2 tasks in the list.
 ____________________
-Got it. I've added this task:
-[E][ ] Dinner (at: 22/01/25 to 24/01/25)
+Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:
+[D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+Now you have 1 tasks in the list.
+____________________
+Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:
+[T][ ] Buy groceries
+Now you have 0 tasks in the list.
+____________________
+It appears that the task number 1 is missing.
+Total number of tasks: 0
+____________________
+It appears that the task number 1 is missing.
+Total number of tasks: 0
+____________________
+It appears that the task number 1 is missing.
+Total number of tasks: 0
+____________________
+Very well, sir, I am now adding this task:
+[T][ ] Buy groceries
+Now you have 1 tasks in the list.
+____________________
+On what date will this task be due, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+23:59
+I'm afraid I cannot do that, sir. The date and time must be a valid datetime in the format YYYY-MM-DD and HH:MM respectively.
+Please try again. What is your next command?
+____________________
+On what date will this task be due, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+
+My sincerest apologies, but the field 'time' seems to be missing. Let's try that again, shall we?
+____________________
+On what date will this task be due, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+23:59
+2025-01-31T23:59
+Very well, sir, I am now adding this task:
+[D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+Now you have 2 tasks in the list.
+____________________
+On what date will this task begin, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+When will this task end, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+I'm afraid I cannot do that, sir. The start time must be before the end time.
+Please try again. What is your next command?
+____________________
+On what date will this task begin, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+When will this task end, sir? (YYYY-MM-DD)
+And at what time, sir? (HH:MM)
+Very well, sir, I am now adding this task:
+[E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
 Now you have 3 tasks in the list.
 ____________________
-1. [T][ ] Run
-2. [D][ ] Homework (by: 24/01/25)
-3. [E][ ] Dinner (at: 22/01/25 to 24/01/25)
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
 ____________________
-Nice! I've marked this task as done:
-[T][X] Run
+Oh my! The odds of successfully completing this task were 3720 to 1.
+[D][X] Assignment 1 (by: 31 Jan 2025 23:59)
 ____________________
-Nice! I've marked this task as done:
-[D][X] Homework (by: 24/01/25)
+Oh my! The odds of successfully completing this task were 3720 to 1.
+[E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
 ____________________
-Nice! I've unmarked this task as done:
-[T][ ] Run
+I really don't see how that's going to help.
+[D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
 ____________________
-1. [T][ ] Run
-2. [D][X] Homework (by: 24/01/25)
-3. [E][ ] Dinner (at: 22/01/25 to 24/01/25)
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
 ____________________
-Bye. Hope to see you again soon!
-____________________
+Hooray! I have saved your tasks, sir.
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+Shutting up, sir.

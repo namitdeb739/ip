@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,6 +38,9 @@ public class C3PO {
         C3PO.printDivider();
 
         Scanner scanner = new Scanner(System.in);
+
+        // Uninitialised but safe as it will be initialised in the
+        // beginning of the do-while loop.
         String input;
 
         do {
@@ -45,7 +49,12 @@ public class C3PO {
                 if (input.trim().isEmpty()) {
                     throw new EmptyInputException();
                 }
+
                 Command command = Command.fromString(input.split(" ")[0]);
+                if (command.requiresDescription() && input.indexOf(" ") == -1) {
+                    throw new MissingFieldException("description");
+                }
+
                 String details = input.substring(input.indexOf(" ") + 1);
 
                 switch (command) {
@@ -57,19 +66,19 @@ public class C3PO {
                     C3PO.todo(details);
                     break;
                 case DEADLINE:
-                    C3PO.deadline(details);
+                    C3PO.deadline(details, scanner);
                     break;
                 case EVENT:
-                    C3PO.event(details);
+                    C3PO.event(details, scanner);
                     break;
                 case MARK:
-                    C3PO.mark(details);
+                    C3PO.mark(Integer.parseInt(details) - 1);
                     break;
                 case UNMARK:
-                    C3PO.unmark(details);
+                    C3PO.unmark(Integer.parseInt(details) - 1);
                     break;
                 case DELETE:
-                    C3PO.delete(details);
+                    C3PO.delete(Integer.parseInt(details) - 1);
                     break;
                 case BYE:
                     break;
@@ -78,21 +87,20 @@ public class C3PO {
                             "My programming forbids me from translating this.");
                     break;
                 }
-
-                C3PO.printDivider();
             } catch (EmptyInputException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Please enter a command.");
             } catch (MissingFieldException e) {
                 System.out.println(e.getMessage());
-                System.out.println(
-                        "Please enter your command with all required fields.");
             } catch (TaskNotFoundException e) {
                 System.out.println(e.getMessage());
                 System.out
                         .println("Total number of tasks: " + C3PO.tasks.size());
+            } finally {
+                if (!input.equals("bye")) {
+                    C3PO.printDivider();
+                }
             }
-
         } while (!input.equals("bye"));
 
         scanner.close();
@@ -111,7 +119,6 @@ public class C3PO {
 
     private static void requestInstructions() {
         System.out.println("How may I assist you today?");
-
     }
 
     private static void printDivider() {
@@ -126,119 +133,36 @@ public class C3PO {
         for (int i = 0; i < C3PO.tasks.size(); i++) {
             System.out.println((i + 1) + ". " + C3PO.tasks.get(i));
         }
-        System.out.println("");
     }
 
-    private static void mark(String input) throws TaskNotFoundException {
-        int taskIndex = Integer.parseInt(input.split(" ")[1]) - 1;
-
-        if (taskIndex >= C3PO.tasks.size() || taskIndex < 0) {
-            throw new TaskNotFoundException(taskIndex + 1);
+    private static void mark(int taskNumber) throws TaskNotFoundException {
+        if (taskNumber >= C3PO.tasks.size() || taskNumber < 0) {
+            throw new TaskNotFoundException(taskNumber + 1);
         }
 
-        C3PO.tasks.get(taskIndex).markAsDone();
+        C3PO.tasks.get(taskNumber).markAsDone();
 
         System.out.println(
                 "Oh my! The odds of successfully completing this task were 3720 to 1.");
-        System.out.println(C3PO.tasks.get(taskIndex));
+        System.out.println(C3PO.tasks.get(taskNumber));
     }
 
-    private static void unmark(String input) throws TaskNotFoundException {
-        int taskIndex = Integer.parseInt(input.split(" ")[1]) - 1;
-
-        if (taskIndex >= C3PO.tasks.size() || taskIndex < 0) {
-            throw new TaskNotFoundException(taskIndex + 1);
+    private static void unmark(int taskNumber) throws TaskNotFoundException {
+        if (taskNumber >= C3PO.tasks.size() || taskNumber < 0) {
+            throw new TaskNotFoundException(taskNumber + 1);
         }
-        C3PO.tasks.get(taskIndex).unmarkAsDone();
+        C3PO.tasks.get(taskNumber).unmarkAsDone();
 
         System.out.println("I really don't see how that's going to help.");
-        System.out.println(C3PO.tasks.get(taskIndex));
+        System.out.println(C3PO.tasks.get(taskNumber));
     }
 
-    private static void todo(String input) throws MissingFieldException {
-        String taskDescription = input;
-
-        if (taskDescription.isEmpty() || taskDescription.isBlank()) {
-            throw new MissingFieldException("description");
+    private static void delete(int taskNumber) throws TaskNotFoundException {
+        if (taskNumber >= C3PO.tasks.size() || taskNumber < 0) {
+            throw new TaskNotFoundException(taskNumber + 1);
         }
 
-        C3PO.tasks.add(new Todo(taskDescription));
-
-        System.out.println("Very well, sir, I am now adding this task:");
-        System.out.println(C3PO.tasks.get(C3PO.tasks.size() - 1));
-        System.out.println(
-                "Now you have " + C3PO.tasks.size() + " tasks in the list.");
-    }
-
-    private static void deadline(String input) throws MissingFieldException {
-        String byCommand = "/by";
-
-        String taskDescription;
-        String by;
-
-        try {
-            taskDescription = input.substring(0, input.indexOf(byCommand))
-                    .trim();
-            by = input.substring(
-                    input.indexOf(byCommand) + byCommand.length() + 1);
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new MissingFieldException("by");
-        }
-
-        if (taskDescription.isEmpty() || taskDescription.isBlank()) {
-            throw new MissingFieldException("description");
-        }
-
-        C3PO.tasks.add(new Deadline(taskDescription, by));
-
-        System.out.println("Very well, sir, I am now adding this task:");
-        System.out.println(C3PO.tasks.get(C3PO.tasks.size() - 1));
-        System.out.println(
-                "Now you have " + C3PO.tasks.size() + " tasks in the list.");
-    }
-
-    private static void event(String input) throws MissingFieldException {
-        String fromCommand = "/from";
-        String toCommand = "/to";
-
-        String taskDescription;
-        String from;
-        String to;
-
-        try {
-            taskDescription = input.substring(0, input.indexOf(fromCommand))
-                    .trim();
-            from = input.substring(
-                    input.indexOf(fromCommand) + fromCommand.length() + 1,
-                    input.indexOf(toCommand)).trim();
-            to = input
-                    .substring(
-                            input.indexOf(toCommand) + toCommand.length() + 1)
-                    .trim();
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new MissingFieldException("from or to");
-        }
-
-        if (taskDescription.isEmpty() || taskDescription.isBlank()) {
-            throw new MissingFieldException("description");
-        }
-
-        C3PO.tasks.add(new Event(taskDescription, from, to));
-
-        System.out.println("Very well, sir, I am now adding this task:");
-        System.out.println(C3PO.tasks.get(C3PO.tasks.size() - 1));
-        System.out.println(
-                "Now you have " + C3PO.tasks.size() + " tasks in the list.");
-    }
-
-    private static void delete(String input) throws TaskNotFoundException {
-        int taskIndex = Integer.parseInt(input.split(" ")[1]) - 1;
-
-        if (taskIndex >= C3PO.tasks.size() || taskIndex < 0) {
-            throw new TaskNotFoundException(taskIndex + 1);
-        }
-
-        Task task = C3PO.tasks.remove(taskIndex);
+        Task task = C3PO.tasks.remove(taskNumber);
 
         System.out.println(
                 "Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:");
@@ -247,14 +171,128 @@ public class C3PO {
                 "Now you have " + C3PO.tasks.size() + " tasks in the list.");
     }
 
+    private static void todo(String description) throws MissingFieldException {
+        if (description.isEmpty() || description.isBlank()) {
+            throw new MissingFieldException("description");
+        }
+
+        Task todo = new Todo(description);
+        C3PO.tasks.add(todo);
+
+        System.out.println("Very well, sir, I am now adding this task:");
+        System.out.println(todo);
+        System.out.println(
+                "Now you have " + C3PO.tasks.size() + " tasks in the list.");
+    }
+
+    private static void deadline(String description, Scanner scanner)
+            throws MissingFieldException {
+        if (description.isEmpty() || description.isBlank()) {
+            throw new MissingFieldException("description");
+        }
+
+        System.out.println(
+                "On what date will this task be due, sir? (YYYY-MM-DD)");
+
+        String date = scanner.nextLine();
+        if (date.isEmpty() || date.isBlank()) {
+            throw new MissingFieldException("date");
+        }
+
+        System.out.println("And at what time, sir? (HH:MM)");
+
+        String time = scanner.nextLine();
+        System.out.println(time);
+        if (time.isEmpty() || time.isBlank()) {
+            throw new MissingFieldException("time");
+        }
+
+        try {
+            LocalDateTime by = LocalDateTime.parse(date + "T" + time);
+            Task deadline = new Deadline(description, by);
+            C3PO.tasks.add(deadline);
+
+            System.out.println("Very well, sir, I am now adding this task:");
+            System.out.println(deadline);
+            System.out.println("Now you have " + C3PO.tasks.size()
+                    + " tasks in the list.");
+        } catch (java.time.format.DateTimeParseException e) {
+            System.out.println(
+                    "I'm afraid I cannot do that, sir. The date and time must be a valid datetime"
+                            + " in the format YYYY-MM-DD and HH:MM respectively.");
+            System.out.println("Please try again. What is your next command?");
+        }
+    }
+
+    private static void event(String description, Scanner scanner)
+            throws MissingFieldException {
+        if (description.isEmpty() || description.isBlank()) {
+            throw new MissingFieldException("description");
+        }
+
+        System.out.println(
+                "On what date will this task begin, sir? (YYYY-MM-DD)");
+
+        String fromDate = scanner.nextLine();
+        if (fromDate.isEmpty() || fromDate.isBlank()) {
+            throw new MissingFieldException("date");
+        }
+
+        System.out.println("And at what time, sir? (HH:MM)");
+
+        String fromTime = scanner.nextLine();
+        if (fromTime.isEmpty() || fromTime.isBlank()) {
+            throw new MissingFieldException("time");
+        }
+
+        System.out.println("When will this task end, sir? (YYYY-MM-DD)");
+
+        String toDate = scanner.nextLine();
+        if (toDate.isEmpty() || toDate.isBlank()) {
+            throw new MissingFieldException("date");
+        }
+
+        System.out.println("And at what time, sir? (HH:MM)");
+
+        String toTime = scanner.nextLine();
+        if (toTime.isEmpty() || toTime.isBlank()) {
+            throw new MissingFieldException("time");
+        }
+
+        try {
+            LocalDateTime from = LocalDateTime.parse(fromDate + "T" + fromTime);
+            LocalDateTime to = LocalDateTime.parse(toDate + "T" + toTime);
+
+            if (from.isAfter(to)) {
+                throw new IllegalArgumentException();
+            }
+
+            Task event = new Event(description, from, to);
+            C3PO.tasks.add(event);
+
+            System.out.println("Very well, sir, I am now adding this task:");
+            System.out.println(event);
+            System.out.println("Now you have " + C3PO.tasks.size()
+                    + " tasks in the list.");
+        } catch (java.time.format.DateTimeParseException e) {
+            System.out.println(
+                    "I'm afraid I cannot do that, sir. The date and time must be in the format YYYY-MM-DD and HH:MM respectively.");
+            System.out.println("Please try again. What is your next command?");
+        } catch (IllegalArgumentException e) {
+            System.out.println(
+                    "I'm afraid I cannot do that, sir. The start time must be before the end time.");
+            System.out.println("Please try again. What is your next command?");
+        }
+    }
+
     private static void loadTasks() {
         try {
             File file = new File("./tasks.txt");
             Scanner scanner = new Scanner(file);
 
             while (scanner.hasNextLine()) {
-                String task = scanner.nextLine();
-                String[] taskComponents = task.split("\\|");
+                String taskString = scanner.nextLine();
+                String[] taskComponents = taskString.split("\\|");
 
                 String taskType = taskComponents[0].strip();
                 boolean isDone = taskComponents[1].equals("1");
@@ -263,33 +301,38 @@ public class C3PO {
                 // Uninitialised but safe as either it will be
                 // initialised in the switch statement or an
                 // exception will be thrown
-                Task newTask;
+                Task task;
                 switch (taskType) {
                 case "T":
-                    newTask = new Todo(taskDescription);
+                    task = new Todo(taskDescription);
                     break;
                 case "D":
                     if (taskComponents.length < 4) {
                         throw new IllegalArgumentException();
                     }
-                    newTask = new Deadline(taskDescription, taskComponents[3]);
+                    LocalDateTime by = LocalDateTime
+                            .parse(taskComponents[3].strip());
+                    task = new Deadline(taskDescription, by);
                     break;
                 case "E":
                     if (taskComponents.length < 5) {
                         throw new IllegalArgumentException();
                     }
-                    newTask = new Event(taskDescription, taskComponents[3],
-                            taskComponents[4]);
+                    LocalDateTime from = LocalDateTime
+                            .parse(taskComponents[3].strip());
+                    LocalDateTime to = LocalDateTime
+                            .parse(taskComponents[4].strip());
+                    task = new Event(taskDescription, from, to);
                     break;
                 default:
                     throw new IllegalArgumentException();
                 }
 
                 if (isDone) {
-                    newTask.markAsDone();
+                    task.markAsDone();
                 }
 
-                C3PO.tasks.add(newTask);
+                C3PO.tasks.add(task);
             }
 
             scanner.close();
