@@ -9,6 +9,6 @@ public class MissingFieldException extends Exception {
      */
     public MissingFieldException(String field) {
         super("My sincerest apologies, but the field '" + field
-                + "' seems to be missing.");
+                + "' seems to be missing. Let's try that again, shall we?");
     }
 }
