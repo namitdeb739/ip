@@ -1,8 +1,18 @@
+package c3po.storage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import c3po.exception.StorageLoadingException;
+import c3po.exception.TaskNotFoundException;
+import c3po.task.Deadline;
+import c3po.task.Event;
+import c3po.task.Task;
+import c3po.task.TaskList;
+import c3po.task.Todo;
 
 /**
  * Represents a storage to store and load tasks.

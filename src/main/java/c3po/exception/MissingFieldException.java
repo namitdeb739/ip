@@ -1,3 +1,5 @@
+package c3po.exception;
+
 /**
  * Exception thrown when a field is missing.
  */

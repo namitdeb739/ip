@@ -1,3 +1,5 @@
+package c3po.exception;
+
 import java.time.LocalDateTime;
 
 /**

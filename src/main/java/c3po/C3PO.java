@@ -1,3 +1,11 @@
+package c3po;
+
+import c3po.command.Command;
+import c3po.exception.StorageLoadingException;
+import c3po.parser.Parser;
+import c3po.storage.Storage;
+import c3po.task.TaskList;
+import c3po.ui.UserInterface;
 
 /**
  * Represents the main class of the Cypher chatbot. The chatbot can manage

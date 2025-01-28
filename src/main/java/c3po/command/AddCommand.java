@@ -1,3 +1,5 @@
+package c3po.command;
+
 /**
  * Represents a command that adds a task to the task list.
  */

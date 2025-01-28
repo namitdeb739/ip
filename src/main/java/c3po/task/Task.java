@@ -1,3 +1,5 @@
+package c3po.task;
+
 /**
  * Represents a task with a description and a status indicating whether it is
  * done.
@@ -53,11 +55,11 @@ public abstract class Task {
     }
 
     /**
-     * Returns the string representation of the task in the format to be saved in
-     * a file.
+     * Returns the string representation of the task in the format to be saved
+     * in a file.
      *
-     * @return The string representation of the task in the format to be saved in a
-     *         file.
+     * @return The string representation of the task in the format to be saved
+     *         in a file.
      */
     public abstract String toFileString();
 

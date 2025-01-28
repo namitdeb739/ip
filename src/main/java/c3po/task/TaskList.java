@@ -1,4 +1,8 @@
+package c3po.task;
+
 import java.util.ArrayList;
+
+import c3po.exception.TaskNotFoundException;
 
 /**
  * Represents a list of tasks. The task list can manage tasks, including marking
