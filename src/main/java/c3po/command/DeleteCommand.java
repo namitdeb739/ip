@@ -29,7 +29,7 @@ public class DeleteCommand extends IndexedCommand {
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
         try {
-            Task task = tasks.delete(index);
+            Task task = tasks.delete(this.index);
             ui.delete(task, tasks.size());
         } catch (TaskNotFoundException e) {
             ui.showTaskNotFoundError();

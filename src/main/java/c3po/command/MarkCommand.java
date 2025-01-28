@@ -29,7 +29,7 @@ public class MarkCommand extends IndexedCommand {
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
         try {
-            Task task = tasks.mark(index);
+            Task task = tasks.mark(this.index);
             ui.mark(task);
         } catch (TaskNotFoundException e) {
             ui.showTaskNotFoundError();

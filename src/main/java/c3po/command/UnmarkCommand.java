@@ -29,7 +29,7 @@ public class UnmarkCommand extends IndexedCommand {
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
         try {
-            Task task = tasks.unmark(index);
+            Task task = tasks.unmark(this.index);
             ui.unmark(task);
         } catch (TaskNotFoundException e) {
             ui.showTaskNotFoundError();

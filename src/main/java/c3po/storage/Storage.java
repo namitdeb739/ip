@@ -67,39 +67,6 @@ public class Storage {
         return tasks;
     }
 
-    private Task getTask(String[] taskField) {
-        String taskType = taskField[0].strip();
-        String taskDescription = taskField[2].strip();
-
-        // Uninitialised but safe as either it will be
-        // initialised in the switch statement or an
-        // exception will be thrown
-        Task task;
-        switch (taskType) {
-        case "T":
-            task = new Todo(taskDescription);
-            break;
-        case "D":
-            if (taskField.length < 4) {
-                throw new IllegalArgumentException();
-            }
-            LocalDateTime by = LocalDateTime.parse(taskField[3].strip());
-            task = new Deadline(taskDescription, by);
-            break;
-        case "E":
-            if (taskField.length < 5) {
-                throw new IllegalArgumentException();
-            }
-            LocalDateTime from = LocalDateTime.parse(taskField[3].strip());
-            LocalDateTime to = LocalDateTime.parse(taskField[4].strip());
-            task = new Event(taskDescription, from, to);
-            break;
-        default:
-            throw new IllegalArgumentException();
-        }
-        return task;
-    }
-
     /**
      * Saves the tasks to the file.
      *
@@ -133,5 +100,40 @@ public class Storage {
 
         System.out.println(tasks);
     }
+
+
+    private Task getTask(String[] taskField) {
+        String taskType = taskField[0].strip();
+        String taskDescription = taskField[2].strip();
+
+        // Uninitialised but safe as either it will be
+        // initialised in the switch statement or an
+        // exception will be thrown
+        Task task;
+        switch (taskType) {
+        case "T":
+            task = new Todo(taskDescription);
+            break;
+        case "D":
+            if (taskField.length < 4) {
+                throw new IllegalArgumentException();
+            }
+            LocalDateTime by = LocalDateTime.parse(taskField[3].strip());
+            task = new Deadline(taskDescription, by);
+            break;
+        case "E":
+            if (taskField.length < 5) {
+                throw new IllegalArgumentException();
+            }
+            LocalDateTime from = LocalDateTime.parse(taskField[3].strip());
+            LocalDateTime to = LocalDateTime.parse(taskField[4].strip());
+            task = new Event(taskDescription, from, to);
+            break;
+        default:
+            throw new IllegalArgumentException();
+        }
+        return task;
+    }
+
 
 }

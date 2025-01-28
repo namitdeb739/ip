@@ -34,7 +34,7 @@ public class TaskList {
      * @return The number of tasks in the task list.
      */
     public int size() {
-        return tasks.size();
+        return this.tasks.size();
     }
 
     /**
@@ -45,10 +45,10 @@ public class TaskList {
      * @throws TaskNotFoundException If the task number is invalid.
      */
     public Task mark(int index) throws TaskNotFoundException {
-        if (index >= tasks.size() || index < 0) {
+        if (index >= this.tasks.size() || index < 0) {
             throw new TaskNotFoundException(index);
         }
-        Task task = tasks.get(index);
+        Task task = this.tasks.get(index);
         task.mark();
         return task;
     }
@@ -61,10 +61,10 @@ public class TaskList {
      * @throws TaskNotFoundException If the task number is invalid.
      */
     public Task unmark(int index) throws TaskNotFoundException {
-        if (index >= tasks.size() || index < 0) {
+        if (index >= this.tasks.size() || index < 0) {
             throw new TaskNotFoundException(index);
         }
-        Task task = tasks.get(index);
+        Task task = this.tasks.get(index);
         task.unmark();
         return task;
     }
@@ -77,10 +77,10 @@ public class TaskList {
      * @throws TaskNotFoundException If the task number is invalid.
      */
     public Task get(int index) throws TaskNotFoundException {
-        if (index >= tasks.size() || index < 0) {
+        if (index >= this.tasks.size() || index < 0) {
             throw new TaskNotFoundException(index);
         }
-        return tasks.get(index);
+        return this.tasks.get(index);
     }
 
     /**
@@ -91,10 +91,10 @@ public class TaskList {
      * @throws TaskNotFoundException If the task number is invalid.
      */
     public Task delete(int index) throws TaskNotFoundException {
-        if (index >= tasks.size() || index < 0) {
+        if (index >= this.tasks.size() || index < 0) {
             throw new TaskNotFoundException(index);
         }
-        return tasks.remove(index);
+        return this.tasks.remove(index);
     }
 
     /**
@@ -103,7 +103,7 @@ public class TaskList {
      * @param task The task to add.
      */
     public void add(Task task) {
-        tasks.add(task);
+        this.tasks.add(task);
     }
 
     /**
