@@ -39,7 +39,7 @@ public class UserInterface {
 
     /**
      * Opens the user interface.
-     * 
+     *
      * @param tasks The task list to manage.
      */
     public void open(TaskList tasks) {
@@ -64,7 +64,7 @@ public class UserInterface {
 
     /**
      * Reads the user input.
-     * 
+     *
      * @return The user input.
      */
     public String getInput() {
@@ -79,9 +79,9 @@ public class UserInterface {
     }
 
     /**
-     * Prints a message.
-     * 
-     * @param message The message to print.
+     * Lists the tasks in the task list.
+     *
+     * @param tasks The task list to list.
      */
     public void list(TaskList tasks) {
         System.out.println(tasks);
@@ -90,7 +90,7 @@ public class UserInterface {
 
     /**
      * Adds a task to the task list.
-     * 
+     *
      * @param task The task to add.
      * @param size The size of the task list.
      */
@@ -103,7 +103,7 @@ public class UserInterface {
 
     /**
      * Marks a task as done.
-     * 
+     *
      * @param task The task to mark.
      */
     public void mark(Task task) {
@@ -115,7 +115,7 @@ public class UserInterface {
 
     /**
      * Unmarks a task as done.
-     * 
+     *
      * @param task The task to unmark.
      */
     public void unmark(Task task) {
@@ -126,7 +126,7 @@ public class UserInterface {
 
     /**
      * Deletes a task from the task list.
-     * 
+     *
      * @param task The task to delete.
      * @param size The size of the task list.
      */

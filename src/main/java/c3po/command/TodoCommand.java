@@ -1,9 +1,9 @@
 package c3po.command;
 
 import c3po.storage.Storage;
+import c3po.task.Task;
 import c3po.task.TaskList;
 import c3po.task.Todo;
-import c3po.task.Task;
 import c3po.ui.UserInterface;
 
 /**

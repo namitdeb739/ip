@@ -3,9 +3,9 @@ package c3po.command;
 import java.time.LocalDateTime;
 
 import c3po.storage.Storage;
-import c3po.task.TaskList;
 import c3po.task.Deadline;
 import c3po.task.Task;
+import c3po.task.TaskList;
 import c3po.ui.UserInterface;
 
 /**

@@ -1,6 +1,11 @@
 {
-    "java.format.settings.url": ".vscode/java-formatter.xml",
-    "githubPullRequests.ignoredPullRequestBranches": [
-        "master"
-    ]
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true,
+  "java.format.settings.url": ".vscode/eclipse-java-google-style.xml",
+  "java.format.settings.profile": "GoogleStyle",
+  "githubPullRequests.ignoredPullRequestBranches": ["master"],
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.checkstyle.configuration": "${workspaceFolder}/config/checkstyle/checkstyle.xml",
+  "editor.defaultFormatter": "redhat.java"
 }

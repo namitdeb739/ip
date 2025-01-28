@@ -6,7 +6,7 @@ package c3po.task;
 public class Todo extends Task {
     /**
      * Constructs a Todo with the specified description.
-     * 
+     *
      * @param description The description of the todo.
      */
     public Todo(String description) {
@@ -16,7 +16,7 @@ public class Todo extends Task {
     /**
      * Returns the string representation of the todo. The string includes the
      * status icon and the description of the todo.
-     * 
+     *
      * @return The string representation of the todo.
      */
     @Override
@@ -27,7 +27,7 @@ public class Todo extends Task {
     /**
      * Returns the string representation of the todo in the format to be saved
      * in a file.
-     * 
+     *
      * @return The string representation of the todo in the format to be saved
      *         in a file.
      */

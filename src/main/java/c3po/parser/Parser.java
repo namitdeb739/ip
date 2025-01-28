@@ -16,13 +16,12 @@ import c3po.command.MarkCommand;
 import c3po.command.TodoCommand;
 import c3po.command.UnknownCommand;
 import c3po.command.UnmarkCommand;
-import c3po.exception.MissingFieldException;
 import c3po.exception.DateTimeException;
 import c3po.exception.EmptyInputException;
+import c3po.exception.MissingFieldException;
 
 /**
- * Parser is a class that parses the user input and returns the corresponding
- * command.
+ * Parser is a class that parses the user input and returns the corresponding command.
  */
 public class Parser {
     /**
@@ -55,8 +54,7 @@ public class Parser {
                 return new TodoCommand(todoDetails);
             case DEADLINE:
                 String[] deadlineFields = details.split(" /by ");
-                if (deadlineFields[0].isEmpty()
-                        || deadlineFields[0].isBlank()) {
+                if (deadlineFields[0].isEmpty() || deadlineFields[0].isBlank()) {
                     throw new MissingFieldException("description");
                 }
                 if (deadlineFields.length < 2 || deadlineFields[1].isEmpty()
@@ -95,8 +93,7 @@ public class Parser {
                     }
                     return new EventCommand(eventDetails, from, to);
                 } catch (DateTimeParseException e) {
-                    throw new DateTimeException(
-                            eventFields[1] + " or " + eventFields[2]);
+                    throw new DateTimeException(eventFields[1] + " or " + eventFields[2]);
                 }
             case MARK:
                 int markTaskNumber = Integer.parseInt(details);
@@ -111,6 +108,8 @@ public class Parser {
                 return new ExitCommand();
             case UNKNOWN:
                 return new UnknownCommand();
+            default:
+                return new InvalidCommand();
             }
         } catch (EmptyInputException e) {
             System.out.println(e.getMessage());

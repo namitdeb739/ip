@@ -10,7 +10,7 @@ import c3po.ui.UserInterface;
 public class InvalidCommand extends Command {
     /**
      * Executes the invalid command.
-     * 
+     *
      * @param tasks   The task list to manage.
      * @param ui      The user interface to manage.
      * @param storage The storage to manage.

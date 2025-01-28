@@ -99,7 +99,7 @@ public class TaskList {
 
     /**
      * Adds a task to the task list.
-     * 
+     *
      * @param task The task to add.
      */
     public void add(Task task) {

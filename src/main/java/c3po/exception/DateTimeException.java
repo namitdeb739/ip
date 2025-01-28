@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class DateTimeException extends Exception {
     /**
      * Constructs a LocalDateTimeException.
-     * 
+     *
      * @param dateTime The LocalDateTime object that could not be parsed.
      */
     public DateTimeException(LocalDateTime dateTime) {
@@ -20,7 +20,7 @@ public class DateTimeException extends Exception {
 
     /**
      * Constructs a LocalDateTimeException.
-     * 
+     *
      * @param dateTime The date/time string that could not be parsed.
      */
     public DateTimeException(String dateTime) {
