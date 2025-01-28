@@ -8,7 +8,7 @@ import c3po.task.TaskList;
 import c3po.ui.UserInterface;
 
 /**
- * Represents the main class of the Cypher chatbot. The chatbot can manage
+ * Represents the main class of the C3PO chatbot. The chatbot can manage
  * tasks, including todos, deadlines, and events.
  */
 public class C3PO {
