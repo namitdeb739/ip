@@ -30,14 +30,14 @@ public abstract class Task {
     /**
      * Marks the task as done.
      */
-    public void markAsDone() {
+    public void mark() {
         this.isDone = true;
     }
 
     /**
      * Marks the task as not done.
      */
-    public void unmarkAsDone() {
+    public void unmark() {
         this.isDone = false;
     }
 
@@ -52,5 +52,13 @@ public abstract class Task {
         return "[" + getStatusIcon() + "] " + description;
     }
 
+    /**
+     * Returns the string representation of the task in the format to be saved in
+     * a file.
+     *
+     * @return The string representation of the task in the format to be saved in a
+     *         file.
+     */
     public abstract String toFileString();
+
 }
