@@ -1,3 +1,5 @@
+package c3po.exception;
+
 /**
  * Represents an exception that is thrown when a task is not found.
  */

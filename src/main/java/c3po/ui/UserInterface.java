@@ -1,4 +1,9 @@
+package c3po.ui;
+
 import java.util.Scanner;
+
+import c3po.task.Task;
+import c3po.task.TaskList;
 
 /**
  * Represents the user interface of the chatbot. The user interface can interact

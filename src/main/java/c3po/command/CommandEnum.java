@@ -1,7 +1,9 @@
+package c3po.command;
+
 /**
  * Represents the command that the user inputs.
  */
-public enum UserCommand {
+public enum CommandEnum {
     BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, UNKNOWN;
 
     /**
@@ -10,9 +12,9 @@ public enum UserCommand {
      * @param command The string representation of the command.
      * @return The Command enum value corresponding to the specified string.
      */
-    public static UserCommand fromString(String command) {
+    public static CommandEnum fromString(String command) {
         try {
-            return UserCommand.valueOf(command.toUpperCase());
+            return CommandEnum.valueOf(command.toUpperCase());
         } catch (IllegalArgumentException e) {
             return UNKNOWN;
         }

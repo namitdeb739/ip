@@ -1,7 +1,9 @@
+package c3po.exception;
+
 /**
  * Exception thrown when the input is empty.
  */
-class EmptyInputException extends Exception {
+public class EmptyInputException extends Exception {
     /**
      * Constructs an EmptyInputException with a default message.
      */

@@ -1,6 +1,24 @@
+package c3po.parser;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import c3po.command.Command;
+import c3po.command.CommandEnum;
+import c3po.command.DeadlineCommand;
+import c3po.command.DeleteCommand;
+import c3po.command.EventCommand;
+import c3po.command.ExitCommand;
+import c3po.command.InvalidCommand;
+import c3po.command.ListCommand;
+import c3po.command.MarkCommand;
+import c3po.command.TodoCommand;
+import c3po.command.UnknownCommand;
+import c3po.command.UnmarkCommand;
+import c3po.exception.MissingFieldException;
+import c3po.exception.DateTimeException;
+import c3po.exception.EmptyInputException;
 
 /**
  * Parser is a class that parses the user input and returns the corresponding
@@ -19,7 +37,7 @@ public class Parser {
                 throw new EmptyInputException();
             }
 
-            UserCommand command = UserCommand.fromString(input.split(" ")[0]);
+            CommandEnum command = CommandEnum.fromString(input.split(" ")[0]);
             if (command.requiresDescription() && input.indexOf(" ") == -1) {
                 throw new MissingFieldException("description");
             }

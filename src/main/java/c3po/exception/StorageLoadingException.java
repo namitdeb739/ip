@@ -1,5 +1,8 @@
+package c3po.exception;
+
 /**
- * Represents an exception that is thrown when an error occurs while loading tasks from the storage file.
+ * Represents an exception that is thrown when an error occurs while loading
+ * tasks from the storage file.
  */
 public class StorageLoadingException extends Exception {
     /**
