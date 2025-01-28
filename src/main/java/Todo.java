@@ -23,11 +23,11 @@ public class Todo extends Task {
     }
 
     /**
-     * Returns the string representation of the todo in the format to be saved in a
-     * file.
+     * Returns the string representation of the todo in the format to be saved
+     * in a file.
      * 
-     * @return The string representation of the todo in the format to be saved in a
-     *         file.
+     * @return The string representation of the todo in the format to be saved
+     *         in a file.
      */
     @Override
     public String toFileString() {

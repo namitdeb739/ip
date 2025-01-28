@@ -16,7 +16,6 @@ public class Deadline extends Task {
      */
     public Deadline(String description, LocalDateTime by) {
         super(description);
-        System.out.println(by);
         this.by = by;
     }
 

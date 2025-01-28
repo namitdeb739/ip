@@ -1,25 +1,23 @@
 /**
- * Represents the command that the user inputs.
+ * Represents a command that can be executed by the user.
  */
-public enum Command {
-    BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, UNKNOWN;
+public abstract class Command {
+    /**
+     * Executes the command.
+     *
+     * @param tasks   List of tasks.
+     * @param ui      User interface.
+     * @param storage Storage.
+     */
+    public abstract void execute(TaskList tasks, UserInterface ui,
+            Storage storage);
 
     /**
-     * Returns the Command enum value corresponding to the specified string.
+     * Returns true if the command is an exit command.
      *
-     * @param command The string representation of the command.
-     * @return The Command enum value corresponding to the specified string.
+     * @return True if the command is an exit command.
      */
-    public static Command fromString(String command) {
-        try {
-            return Command.valueOf(command.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return UNKNOWN;
-        }
-    }
-
-    public boolean requiresDescription() {
-        return this == TODO || this == DEADLINE || this == EVENT || this == MARK
-                || this == DELETE;
+    public boolean isExit() {
+        return false;
     }
 }

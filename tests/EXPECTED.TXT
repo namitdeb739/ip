@@ -1,0 +1,95 @@
+____________________
+            .-.
+           |o,o|
+        ,| _\=/_      .-''-.
+        ||/_/_\_\    /[] _ _\
+        |_/|(_)|\  _|_o_LII|_
+           \._./// / | ==== | \
+           |\_/|'` |_| ==== |_|
+           |_|_|    ||' ||  ||
+           |-|-|    ||LI  o ||
+           |_|_|    ||'----'||
+          /_/ \_\  /__|    |__\n
+Hello, I am C-3PO, human-cyborg relations.
+I am fluent in over six million forms of communication.
+
+Here are your pending tasks, sir:
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+____________________
+
+How may I assist you, sir?
+____________________
+____________________
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+____________________
+Excuse me, sir. Might I inquire what's going on? You seem to be requesting me to do nothing.
+Please enter a command.
+How may I assist you, sir?
+____________________
+Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:
+[E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+Now you have 2 tasks in the list.
+____________________
+Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:
+[D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+Now you have 1 tasks in the list.
+____________________
+Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:
+[T][ ] Buy groceries
+Now you have 0 tasks in the list.
+____________________
+I'm terribly sorry, sir, but I cannot find this task.
+____________________
+I'm terribly sorry, sir, but I cannot find this task.
+____________________
+I'm terribly sorry, sir, but I cannot find this task.
+____________________
+Very well, sir, I am now adding this task:
+[T][ ] Buy groceries
+Now you have 1 tasks in the list.
+____________________
+Oh my! It seems that I cannot understand the date/time you provided: 2025-01-32 23:59
+Please provide the date/time in the format yyyy-MM-dd HH:mm.
+How may I assist you, sir?
+____________________
+Oh my! It seems that I cannot understand the date/time you provided: 2025-01-31
+Please provide the date/time in the format yyyy-MM-dd HH:mm.
+How may I assist you, sir?
+____________________
+Very well, sir, I am now adding this task:
+[D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+Now you have 2 tasks in the list.
+____________________
+The start date/time cannot be after the end date/time.
+How may I assist you, sir?
+____________________
+Very well, sir, I am now adding this task:
+[E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+Now you have 3 tasks in the list.
+____________________
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][ ] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+____________________
+Oh my! The odds of successfully completing this task were 3720 to 1.
+[D][X] Assignment 1 (by: 31 Jan 2025 23:59)
+____________________
+Oh my! The odds of successfully completing this task were 3720 to 1.
+[E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+____________________
+I really don't see how that's going to help.
+[D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+____________________
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+____________________
+Hooray! I have saved your tasks, sir.
+1. [T][ ] Buy groceries
+2. [D][ ] Assignment 1 (by: 31 Jan 2025 23:59)
+3. [E][X] Career fair (on: 25 Jan 2025 09:00 to 27 Jan 2025 18:00)
+Shutting up, sir.
