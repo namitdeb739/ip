@@ -59,7 +59,6 @@ public class UserInterface {
 
         System.out.println();
         this.requestInstructions();
-        this.printDivider();
     }
 
     /**

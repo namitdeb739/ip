@@ -28,7 +28,7 @@ public class DeadlineCommand extends AddCommand {
     /**
      * Executes the command to add a deadline task.
      *
-     * @param tasks   List of tasks.
+    * @param tasks   List of tasks.
      * @param ui      User interface.
      * @param storage Storage.
      */
