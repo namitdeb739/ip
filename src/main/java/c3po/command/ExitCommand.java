@@ -7,7 +7,6 @@ import c3po.ui.UserInterface;
 /**
  * Represents a command to exit the chatbot.
  */
-
 public class ExitCommand extends Command {
     /**
      * Executes the command to exit the chatbot.
