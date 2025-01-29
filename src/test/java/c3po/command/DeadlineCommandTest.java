@@ -13,16 +13,25 @@ import c3po.exception.TaskNotFoundException;
 import c3po.task.Deadline;
 import c3po.task.Task;
 
+/**
+ * Tests for DeadlineCommand.
+ */
 public class DeadlineCommandTest extends IoCommandTest {
 
     private DeadlineCommand deadlineCommand;
 
+    /**
+     * Sets up the DeadlineCommand for testing.
+     */
     @BeforeEach
     public void setUpDeadlineCommand() {
         this.deadlineCommand =
                 new DeadlineCommand("Finish project", LocalDateTime.of(2023, 10, 10, 23, 59));
     }
 
+    /**
+     * Tests the execute method of DeadlineCommand if it adds a Deadline task to the task list.
+     */
     @Test
     public void execute_addsDeadlineTask() {
         this.deadlineCommand.execute(this.tasks, this.ui, this.storage);
@@ -35,6 +44,10 @@ public class DeadlineCommandTest extends IoCommandTest {
         }
     }
 
+
+    /**
+     * Tests the execute method of DeadlineCommand if it increases the size of the task list.
+     */
     @Test
     public void execute_increasesTaskListSize() {
         int initialSize = this.tasks.size();

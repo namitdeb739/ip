@@ -11,6 +11,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the UserInterface class.
+ */
 public class UserInterfaceTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -20,6 +23,9 @@ public class UserInterfaceTest {
     private final InputStream originalIn = System.in;
     private UserInterface ui;
 
+    /**
+     * Sets up the I/O for testing.
+     */
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(this.outputStreamCaptor));
@@ -27,12 +33,18 @@ public class UserInterfaceTest {
         this.ui = new UserInterface();
     }
 
+    /**
+     * Tears down the I/O after testing.
+     */
     @AfterEach
     public void tearDown() {
         System.setOut(this.originalOut);
         System.setIn(this.originalIn);
     }
 
+    /**
+     * Tests that the user interface reads the correct input.
+     */
     @Test
     public void getInput_readsCorrectInput() {
         String input = this.ui.getInput();

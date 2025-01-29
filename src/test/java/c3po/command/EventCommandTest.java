@@ -10,8 +10,14 @@ import org.junit.jupiter.api.Test;
 import c3po.exception.TaskNotFoundException;
 import c3po.task.Event;
 
+/**
+ * Tests for EventCommand.
+ */
 public class EventCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method of EventCommand if it adds an event task to the task list.
+     */
     @Test
     public void execute_addsEventTask() {
         LocalDateTime from = LocalDateTime.parse("2023-12-31T10:00");

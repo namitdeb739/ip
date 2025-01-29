@@ -6,8 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import c3po.task.Todo;
 
+/**
+ * Tests for ListCommand.
+ */
 public class ListCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method of ListCommand if it lists all tasks in the task list.
+     */
     @Test
     public void execute_listsAllTasks() {
         this.tasks.add(new Todo("read book"));
