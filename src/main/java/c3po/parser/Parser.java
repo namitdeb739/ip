@@ -10,6 +10,7 @@ import c3po.command.DeadlineCommand;
 import c3po.command.DeleteCommand;
 import c3po.command.EventCommand;
 import c3po.command.ExitCommand;
+import c3po.command.FindCommand;
 import c3po.command.InvalidCommand;
 import c3po.command.ListCommand;
 import c3po.command.MarkCommand;
@@ -58,6 +59,8 @@ public class Parser {
                 return Parser.parseUnmark(details);
             case DELETE:
                 return Parser.parseDelete(details);
+            case FIND:
+                return Parser.parseFind(details);
             case BYE:
                 return Parser.parseBye();
             case UNKNOWN:
@@ -76,6 +79,10 @@ public class Parser {
             System.out.println(e.getMessage());
         }
         return new InvalidCommand();
+    }
+
+    private static Command parseFind(String details) {
+        return new FindCommand(details);
     }
 
     private static Command parseUnknown() {

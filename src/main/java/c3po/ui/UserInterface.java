@@ -6,20 +6,16 @@ import c3po.task.Task;
 import c3po.task.TaskList;
 
 /**
- * Represents the user interface of the chatbot. The user interface can interact
- * with the user by printing messages and reading input.
+ * Represents the user interface of the chatbot. The user interface can interact with the user by
+ * printing messages and reading input.
  */
 public class UserInterface {
-    private static final String logo = "" + "            .-.\n"
-            + "           |o,o|\n" + "        ,| _\\=/_      .-''-.\n"
-            + "        ||/_/_\\_\\    /[] _ _\\\n"
-            + "        |_/|(_)|\\  _|_o_LII|_\n"
-            + "           \\._./// / | ==== | \\\n"
-            + "           |\\_/|'` |_| ==== |_|\n"
-            + "           |_|_|    ||' ||  ||\n"
-            + "           |-|-|    ||LI  o ||\n"
-            + "           |_|_|    ||'----'||\n"
-            + "          /_/ \\_\\  /__|    |__\\n";
+    private static final String logo =
+            "" + "            .-.\n" + "           |o,o|\n" + "        ,| _\\=/_      .-''-.\n"
+                    + "        ||/_/_\\_\\    /[] _ _\\\n" + "        |_/|(_)|\\  _|_o_LII|_\n"
+                    + "           \\._./// / | ==== | \\\n" + "           |\\_/|'` |_| ==== |_|\n"
+                    + "           |_|_|    ||' ||  ||\n" + "           |-|-|    ||LI  o ||\n"
+                    + "           |_|_|    ||'----'||\n" + "          /_/ \\_\\  /__|    |__\\n";
     private Scanner scanner;
 
     /**
@@ -46,8 +42,7 @@ public class UserInterface {
         this.printDivider();
         System.out.println(UserInterface.logo);
         System.out.println("Hello, I am C-3PO, human-cyborg relations.");
-        System.out.println(
-                "I am fluent in over six million forms of communication.");
+        System.out.println("I am fluent in over six million forms of communication.");
         System.out.println();
 
         if (tasks.size() == 0) {
@@ -106,8 +101,7 @@ public class UserInterface {
      * @param task The task to mark.
      */
     public void mark(Task task) {
-        System.out.println(
-                "Oh my! The odds of successfully completing this task were 3720 to 1.");
+        System.out.println("Oh my! The odds of successfully completing this task were 3720 to 1.");
         System.out.println(task);
         this.printDivider();
     }
@@ -141,8 +135,7 @@ public class UserInterface {
      * Shows an error message when a task is not found.
      */
     public void showTaskNotFoundError() {
-        System.out.println(
-                "I'm terribly sorry, sir, but I cannot find this task.");
+        System.out.println("I'm terribly sorry, sir, but I cannot find this task.");
         this.printDivider();
     }
 
@@ -150,8 +143,7 @@ public class UserInterface {
      * Shows an error message when a command is not recognised.
      */
     public void showUnknownCommand() {
-        System.out.println(
-                "I'm terribly sorry, sir, but I do not understand this command.");
+        System.out.println("I'm terribly sorry, sir, but I do not understand this command.");
         this.printDivider();
     }
 
@@ -165,6 +157,25 @@ public class UserInterface {
 
     private void printDivider() {
         System.out.println("____________________");
+    }
+
+    /**
+     * Finds tasks in the task list.
+     *
+     * @param foundTasks The tasks found.
+     */
+    public void find(TaskList foundTasks) {
+        if (foundTasks.size() == 0) {
+            System.out
+                    .println("Perhaps I can find some clue in these volumes that will save us all! "
+                            + "Now let me see, this looks like... yes... two cups... "
+                            + "balka greens... add a pinch of—oh, blast it all! "
+                            + "This is a cookbook!");
+        } else {
+            System.out.println("I've found it! :");
+            System.out.println(foundTasks);
+        }
+        this.printDivider();
     }
 
 }
