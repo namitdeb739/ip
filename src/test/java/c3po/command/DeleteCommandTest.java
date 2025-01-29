@@ -7,8 +7,14 @@ import org.junit.jupiter.api.Test;
 import c3po.task.Task;
 import c3po.task.Todo;
 
+/**
+ * Tests for DeleteCommand.
+ */
 public class DeleteCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method of DeleteCommand if it deletes a task from the task list.
+     */
     @Test
     public void execute_validIndex_deletesTask() {
         Task task = new Todo("read book");
@@ -22,6 +28,9 @@ public class DeleteCommandTest extends IoCommandTest {
         assertEquals(0, this.tasks.size());
     }
 
+    /**
+     * Tests the execute method of DeleteCommand with an invalid index.
+     */
     @Test
     public void execute_invalidIndex_showsTaskNotFoundError() {
         DeleteCommand deleteCommand = new DeleteCommand(0);

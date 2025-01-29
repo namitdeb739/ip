@@ -9,8 +9,14 @@ import c3po.exception.TaskNotFoundException;
 import c3po.task.Task;
 import c3po.task.Todo;
 
+/**
+ * Tests for MarkCommand.
+ */
 public class MarkCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method of MarkCommand if it marks a task as done.
+     */
     @Test
     public void execute_validIndex_marksTaskAsDone() {
         Task task = new Todo("read book");
@@ -31,6 +37,9 @@ public class MarkCommandTest extends IoCommandTest {
         assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
     }
 
+    /**
+     * Tests the execute method of MarkCommand when the index is invalid.
+     */
     @Test
     public void execute_invalidIndex_showsTaskNotFoundError() {
         MarkCommand markCommand = new MarkCommand(0);

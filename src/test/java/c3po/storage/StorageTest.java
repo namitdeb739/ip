@@ -21,16 +21,25 @@ import c3po.task.Task;
 import c3po.task.TaskList;
 import c3po.task.Todo;
 
+/**
+ * Tests the Storage class.
+ */
 public class StorageTest {
 
     private static final String TEST_FILE_PATH = "test_tasks.txt";
     private Storage storage;
 
+    /**
+     * Sets up the storage for testing.
+     */
     @BeforeEach
     public void setUp() {
         this.storage = new Storage(TEST_FILE_PATH);
     }
 
+    /**
+     * Tests the loadTasks method with a valid file.
+     */
     @Test
     public void loadTasks_validFile_loadsTasks() throws IOException, StorageLoadingException {
         this.createTestFile("T | 1 | read book\nD | 0 | submit report | 2023-12-31T23:59\n"
@@ -43,6 +52,9 @@ public class StorageTest {
                 tasks.get(2).toString());
     }
 
+    /**
+     * Tests the loadTasks method with no preexisting file.
+     */
     @Test
     public void loadTasks_nonExistentFile_createsNewFile() {
         try {
@@ -54,6 +66,9 @@ public class StorageTest {
         }
     }
 
+    /**
+     * Tests the saveTasks method with valid tasks.
+     */
     @Test
     public void saveTasks_validTasks_savesTasks() throws IOException {
         TaskList tasks = new TaskList();

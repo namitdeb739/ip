@@ -10,8 +10,14 @@ import c3po.exception.TaskNotFoundException;
 import c3po.task.Task;
 import c3po.task.Todo;
 
+/**
+ * Tests the TodoCommand class.
+ */
 public class TodoCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method.
+     */
     @Test
     public void execute_addsTodoTask() {
         TodoCommand todoCommand = new TodoCommand("read book");

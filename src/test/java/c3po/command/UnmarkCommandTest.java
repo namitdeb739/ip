@@ -9,8 +9,14 @@ import c3po.exception.TaskNotFoundException;
 import c3po.task.Task;
 import c3po.task.Todo;
 
+/**
+ * Tests the UnmarkCommand class.
+ */
 public class UnmarkCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method with a valid index.
+     */
     @Test
     public void execute_validIndex_unmarksTaskAsNotDone() {
         Task task = new Todo("read book");
@@ -32,6 +38,9 @@ public class UnmarkCommandTest extends IoCommandTest {
         assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
     }
 
+    /**
+     * Tests the execute method with an invalid index.
+     */
     @Test
     public void execute_invalidIndex_showsTaskNotFoundError() {
         UnmarkCommand unmarkCommand = new UnmarkCommand(0);

@@ -10,8 +10,14 @@ import org.junit.jupiter.api.Test;
 
 import c3po.task.Todo;
 
+/**
+ * Tests for ExitCommand.
+ */
 public class ExitCommandTest extends IoCommandTest {
 
+    /**
+     * Tests the execute method of ExitCommand if it saves the tasks and closes the UI.
+     */
     @Test
     public void execute_savesTasksAndClosesUI() {
         this.tasks.add(new Todo("read book"));
@@ -35,6 +41,9 @@ public class ExitCommandTest extends IoCommandTest {
         }
     }
 
+    /**
+     * Tests the isExit method of ExitCommand.
+     */
     @Test
     public void isExit_returnsTrue() {
         ExitCommand exitCommand = new ExitCommand();
