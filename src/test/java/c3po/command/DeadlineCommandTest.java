@@ -1,7 +1,7 @@
 package c3po.command;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDateTime;
@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import c3po.exception.TaskNotFoundException;
 import c3po.task.Deadline;
 import c3po.task.Task;
-import c3po.exception.TaskNotFoundException;
 
-public class DeadlineCommandTest extends IOCommandTest {
+public class DeadlineCommandTest extends IoCommandTest {
 
     private DeadlineCommand deadlineCommand;
 

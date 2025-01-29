@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import c3po.exception.TaskNotFoundException;
 import c3po.task.Event;
 
-public class EventCommandTest extends IOCommandTest {
+public class EventCommandTest extends IoCommandTest {
 
     @Test
     public void execute_addsEventTask() {

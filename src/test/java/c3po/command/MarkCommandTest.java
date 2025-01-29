@@ -2,12 +2,14 @@ package c3po.command;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Test;
+
 import c3po.exception.TaskNotFoundException;
 import c3po.task.Task;
 import c3po.task.Todo;
 
-public class MarkCommandTest extends IOCommandTest {
+public class MarkCommandTest extends IoCommandTest {
 
     @Test
     public void execute_validIndex_marksTaskAsDone() {

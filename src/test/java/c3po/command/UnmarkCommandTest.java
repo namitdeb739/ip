@@ -5,11 +5,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
+import c3po.exception.TaskNotFoundException;
 import c3po.task.Task;
 import c3po.task.Todo;
-import c3po.exception.TaskNotFoundException;
 
-public class UnmarkCommandTest extends IOCommandTest {
+public class UnmarkCommandTest extends IoCommandTest {
 
     @Test
     public void execute_validIndex_unmarksTaskAsNotDone() {

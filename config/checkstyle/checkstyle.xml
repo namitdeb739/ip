@@ -86,12 +86,12 @@
         <!-- Validate abbreviations (consecutive capital letters) length in identifier name -->
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false" />
-            <property name="allowedAbbreviationLength" value="1" />
+            <property name="allowedAbbreviationLength" value="2" />
         </module>
 
         <module name="PackageName">
             <!-- Validates identifiers for package names against the supplied expression. -->
-            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]{1,})*$" />
+            <property name="format" value="^[a-z0-9]+(\.[a-z][a-z0-9]{1,})*$" />
             <property name="severity" value="warning" />
         </module>
 

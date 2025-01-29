@@ -1,7 +1,7 @@
 package c3po.command;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import c3po.task.Todo;
 
-public class ExitCommandTest extends IOCommandTest {
+public class ExitCommandTest extends IoCommandTest {
 
     @Test
     public void execute_savesTasksAndClosesUI() {

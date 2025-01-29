@@ -1,15 +1,16 @@
 package c3po.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,8 +33,8 @@ public class StorageTest {
 
     @Test
     public void loadTasks_validFile_loadsTasks() throws IOException, StorageLoadingException {
-        this.createTestFile(
-                "T | 1 | read book\nD | 0 | submit report | 2023-12-31T23:59\nE | 1 | project meeting | 2023-12-31T10:00 | 2023-12-31T12:00");
+        this.createTestFile("T | 1 | read book\nD | 0 | submit report | 2023-12-31T23:59\n"
+                + "E | 1 | project meeting | 2023-12-31T10:00 | 2023-12-31T12:00");
         ArrayList<Task> tasks = this.storage.loadTasks();
         assertEquals(3, tasks.size());
         assertEquals("[T][X] read book", tasks.get(0).toString());

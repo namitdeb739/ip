@@ -1,3 +1,0 @@
-T | 0 | read book
-D | 0 | submit report | 2023-12-31T23:59
-E | 0 | project meeting | 2023-12-31T10:00 | 2023-12-31T12:00

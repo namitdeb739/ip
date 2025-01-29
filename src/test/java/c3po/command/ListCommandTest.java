@@ -1,10 +1,12 @@
 package c3po.command;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
+
 import c3po.task.Todo;
 
-public class ListCommandTest extends IOCommandTest {
+public class ListCommandTest extends IoCommandTest {
 
     @Test
     public void execute_listsAllTasks() {
