@@ -122,4 +122,20 @@ public class TaskList {
         }
         return sb.toString();
     }
+
+    /**
+     * Finds tasks with the specified keyword.
+     *
+     * @param keyword The keyword to search for.
+     * @return The tasks with the specified keyword.
+     */
+    public TaskList find(String keyword) {
+        ArrayList<Task> foundTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.descriptionContains(keyword)) {
+                foundTasks.add(task);
+            }
+        }
+        return new TaskList(foundTasks);
+    }
 }

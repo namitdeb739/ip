@@ -26,7 +26,7 @@ import c3po.task.Todo;
  */
 public class StorageTest {
 
-    private static final String TEST_FILE_PATH = "test_tasks.txt";
+    protected static final String TEST_FILE_PATH = "data/tests/test_tasks.txt";
     private Storage storage;
 
     /**
@@ -41,15 +41,26 @@ public class StorageTest {
      * Tests the loadTasks method with a valid file.
      */
     @Test
-    public void loadTasks_validFile_loadsTasks() throws IOException, StorageLoadingException {
-        this.createTestFile("T | 1 | read book\nD | 0 | submit report | 2023-12-31T23:59\n"
-                + "E | 1 | project meeting | 2023-12-31T10:00 | 2023-12-31T12:00");
-        ArrayList<Task> tasks = this.storage.loadTasks();
-        assertEquals(3, tasks.size());
-        assertEquals("[T][X] read book", tasks.get(0).toString());
-        assertEquals("[D][ ] submit report (by: 31 Dec 2023 23:59)", tasks.get(1).toString());
-        assertEquals("[E][X] project meeting (on: 31 Dec 2023 10:00 to 31 Dec 2023 12:00)",
-                tasks.get(2).toString());
+    public void loadTasks_validFile_loadsTasks() {
+        try {
+            this.createTestFile("T | 1 | read book\nD | 0 | submit report | 2023-12-31T23:59\n"
+                    + "E | 1 | project meeting | 2023-12-31T10:00 | 2023-12-31T12:00");
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("IOException should not be thrown.");
+        }
+        try {
+            ArrayList<Task> tasks = this.storage.loadTasks();
+            assertEquals(3, tasks.size());
+            assertEquals("[T][X] read book", tasks.get(0).toString());
+            assertEquals("[D][ ] submit report (by: 31 Dec 2023 23:59)", tasks.get(1).toString());
+            assertEquals("[E][X] project meeting (on: 31 Dec 2023 10:00 to 31 Dec 2023 12:00)",
+                    tasks.get(2).toString());
+        } catch (StorageLoadingException e) {
+            e.printStackTrace();
+            fail("StorageLoadingException should not be thrown.");
+        }
+
     }
 
     /**
@@ -70,7 +81,7 @@ public class StorageTest {
      * Tests the saveTasks method with valid tasks.
      */
     @Test
-    public void saveTasks_validTasks_savesTasks() throws IOException {
+    public void saveTasks_validTasks_savesTasks() {
         TaskList tasks = new TaskList();
         tasks.add(new Todo("read book"));
         tasks.add(new Deadline("submit report", LocalDateTime.parse("2023-12-31T23:59")));
@@ -84,6 +95,9 @@ public class StorageTest {
             while (scanner.hasNextLine()) {
                 fileContent.append(scanner.nextLine()).append("\n");
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("IOException should not be thrown.");
         }
         String expectedContent =
                 "T | 0 | read book\n" + "D | 0 | submit report | 2023-12-31T23:59\n"
@@ -92,6 +106,13 @@ public class StorageTest {
     }
 
     private void createTestFile(String content) throws IOException {
+        if (!new File(TEST_FILE_PATH).getParentFile().exists()) {
+            new File(TEST_FILE_PATH).getParentFile().mkdirs();
+        }
+        if (!new File(TEST_FILE_PATH).exists()) {
+            new File(TEST_FILE_PATH).createNewFile();
+        }
+
         try (FileWriter writer = new FileWriter(TEST_FILE_PATH)) {
             writer.write(content);
         }

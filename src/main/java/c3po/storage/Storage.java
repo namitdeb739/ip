@@ -38,7 +38,7 @@ public class Storage {
     public ArrayList<Task> loadTasks() throws StorageLoadingException {
         ArrayList<Task> tasks = new ArrayList<Task>();
         try {
-            Scanner scanner = new Scanner(file);
+            Scanner scanner = new Scanner(this.file);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] taskField = line.split("\\|");
@@ -56,7 +56,7 @@ public class Storage {
             scanner.close();
         } catch (FileNotFoundException e) {
             try {
-                file.createNewFile();
+                this.file.createNewFile();
             } catch (java.io.IOException ioException) {
                 throw new StorageLoadingException();
             }
@@ -74,14 +74,14 @@ public class Storage {
      */
     public void saveTasks(TaskList tasks) {
         try {
-            if (!file.exists()) {
-                file.createNewFile();
+            if (!this.file.exists()) {
+                this.file.createNewFile();
             } else {
-                file.delete();
-                file.createNewFile();
+                this.file.delete();
+                this.file.createNewFile();
             }
 
-            java.io.FileWriter writer = new java.io.FileWriter(file);
+            java.io.FileWriter writer = new java.io.FileWriter(this.file);
 
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = tasks.get(i);
