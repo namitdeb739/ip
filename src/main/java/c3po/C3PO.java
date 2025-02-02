@@ -15,15 +15,16 @@ public class C3PO {
     private Storage storage;
     private TaskList tasks;
     private UserInterface ui;
+    private String commandType;
 
     /**
      * Constructs a chatbot with the specified file path.
      *
      * @param filePath The file path to store the tasks.
      */
-    public C3PO(String filePath) {
+    public C3PO() {
         this.ui = new UserInterface();
-        this.storage = new Storage(filePath);
+        this.storage = new Storage("./data/tasks.txt");
         try {
             this.tasks = new TaskList(storage.loadTasks());
         } catch (StorageLoadingException e) {
@@ -48,14 +49,30 @@ public class C3PO {
     }
 
     /**
-     * Represents the main method of the chatbot. The chatbot will greet the
-     * user and prompt for commands. The chatbot will continue to prompt for
-     * commands until the user types "bye".
+     * Represents the main method of the chatbot. The chatbot will greet the user and prompt for
+     * commands. The chatbot will continue to prompt for commands until the user types "bye".
      *
      * @param args The command line arguments.
      */
     public static void main(String[] args) {
-        new C3PO("data/tasks.txt").run();
+        new C3PO().run();
     }
 
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parse(input);
+            c.execute(tasks, ui, storage);
+            this.commandType = c.getClass().getSimpleName();
+            return c.getString();
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    public String getCommandType() {
+        return commandType;
+    }
 }

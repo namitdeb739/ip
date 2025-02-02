@@ -43,4 +43,13 @@ public class EventCommand extends AddCommand {
         ui.add(task, tasks.size());
     }
 
+    /**
+     * Returns the string representation of the command.
+     *
+     * @return String representation of the command.
+     */
+    @Override
+    public String getString() {
+        return "event";
+    }
 }

@@ -30,4 +30,14 @@ public class ExitCommand extends Command {
     public boolean isExit() {
         return true;
     }
+
+    /**
+     * Returns the string representation of the command.
+     *
+     * @return String representation of the command.
+     */
+    @Override
+    public String getString() {
+        return "exit";
+    }
 }

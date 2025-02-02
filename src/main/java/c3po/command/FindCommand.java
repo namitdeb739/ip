@@ -33,4 +33,13 @@ public class FindCommand extends Command {
         ui.find(foundTasks);
     }
 
+    /**
+     * Returns the string representation of the command.
+     *
+     * @return String representation of the command.
+     */
+    @Override
+    public String getString() {
+        return "find";
+    }
 }

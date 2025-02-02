@@ -20,4 +20,14 @@ public class UnknownCommand extends Command {
         ui.showUnknownCommand();
     }
 
+    /**
+     * Returns the string representation of the command.
+     *
+     * @return String representation of the command.
+     */
+    @Override
+    public String getString() {
+        return "unknown";
+    }
+
 }

@@ -22,8 +22,8 @@ public class TodoCommand extends AddCommand {
     /**
      * Executes the command to add a todo task.
      *
-     * @param tasks   List of tasks.
-     * @param ui      User interface.
+     * @param tasks List of tasks.
+     * @param ui User interface.
      * @param storage Storage.
      */
     @Override
@@ -33,4 +33,13 @@ public class TodoCommand extends AddCommand {
         ui.add(task, tasks.size());
     }
 
+    /**
+     * Returns the string representation of the command.
+     *
+     * @return String representation of the command.
+     */
+    @Override
+    public String getString() {
+        return "todo";
+    }
 }
