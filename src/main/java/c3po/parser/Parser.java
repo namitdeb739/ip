@@ -84,7 +84,8 @@ public class Parser {
     }
 
     private static Command parseFind(String details) {
-        return new FindCommand(details);
+        String[] keywords = details.split(" ");
+        return new FindCommand(keywords);
     }
 
     private static Command parseUnknown() {

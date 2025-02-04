@@ -1,16 +1,14 @@
 package c3po.task;
 
 /**
- * Represents a task with a description and a status indicating whether it is
- * done.
+ * Represents a task with a description and a status indicating whether it is done.
  */
 public abstract class Task {
     protected String description;
     protected boolean isDone;
 
     /**
-     * Constructs a Task with the specified description. The task is initially
-     * not done.
+     * Constructs a Task with the specified description. The task is initially not done.
      *
      * @param description The description of the task.
      */
@@ -20,8 +18,7 @@ public abstract class Task {
     }
 
     /**
-     * Returns the status icon of the task. "X" if the task is done, otherwise a
-     * space.
+     * Returns the status icon of the task. "X" if the task is done, otherwise a space.
      *
      * @return The status icon of the task.
      */
@@ -44,8 +41,8 @@ public abstract class Task {
     }
 
     /**
-     * Returns the string representation of the task. The string includes the
-     * status icon and the description of the task.
+     * Returns the string representation of the task. The string includes the status icon and the
+     * description of the task.
      *
      * @return The string representation of the task.
      */
@@ -55,24 +52,25 @@ public abstract class Task {
     }
 
     /**
-     * Returns the string representation of the task in the format to be saved
-     * in a file.
+     * Returns the string representation of the task in the format to be saved in a file.
      *
-     * @return The string representation of the task in the format to be saved
-     *         in a file.
+     * @return The string representation of the task in the format to be saved in a file.
      */
     public abstract String toFileString();
 
     /**
-     * Returns true if the description of the task contains the specified
-     * keyword.
+     * Returns true if the description of the task contains the specified keyword.
      *
      * @param keyword The keyword to search for.
-     * @return True if the description of the task contains the specified
-     *         keyword.
+     * @return True if the description of the task contains the specified keyword.
      */
-    public boolean descriptionContains(String keyword) {
-        return this.description.contains(keyword);
+    public boolean descriptionContainsAll(String... keyword) {
+        for (String k : keyword) {
+            if (!this.description.toLowerCase().contains(k.toLowerCase())) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

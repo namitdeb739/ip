@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import c3po.exception.TaskNotFoundException;
 
 /**
- * Represents a list of tasks. The task list can manage tasks, including marking
- * tasks as done, deleting tasks, and adding tasks.
+ * Represents a list of tasks. The task list can manage tasks, including marking tasks as done,
+ * deleting tasks, and adding tasks.
  */
 public class TaskList {
 
@@ -126,13 +126,13 @@ public class TaskList {
     /**
      * Finds tasks with the specified keyword.
      *
-     * @param keyword The keyword to search for.
+     * @param keywords The keyword to search for.
      * @return The tasks with the specified keyword.
      */
-    public TaskList find(String keyword) {
+    public TaskList find(String... keywords) {
         ArrayList<Task> foundTasks = new ArrayList<>();
         for (Task task : tasks) {
-            if (task.descriptionContains(keyword)) {
+            if (task.descriptionContainsAll(keywords)) {
                 foundTasks.add(task);
             }
         }
