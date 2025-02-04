@@ -36,6 +36,7 @@ public class Storage {
      * @throws StorageLoadingException If there is an error loading the tasks.
      */
     public ArrayList<Task> loadTasks() throws StorageLoadingException {
+        assert this.file != null : "Oh no! My memory banks are corrupted. I cannot recall the file path.";
         ArrayList<Task> tasks = new ArrayList<Task>();
         try {
             Scanner scanner = new Scanner(this.file);
