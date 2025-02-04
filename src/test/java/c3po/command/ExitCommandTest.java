@@ -1,5 +1,6 @@
 package c3po.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ public class ExitCommandTest extends IoCommandTest {
         ExitCommand exitCommand = new ExitCommand();
         exitCommand.execute(this.tasks, this.ui, this.storage);
         String expectedOutput = "Hooray! I have saved your tasks, sir.";
-        assertTrue(this.outputStreamCaptor.toString().contains(expectedOutput));
+        assertEquals(this.outputStreamCaptor.toString(), expectedOutput);
     }
 
     /**
