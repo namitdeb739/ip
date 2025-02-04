@@ -83,7 +83,7 @@ public class Storage {
             }
 
             java.io.FileWriter writer = new java.io.FileWriter(this.file);
-
+            
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = tasks.get(i);
                 writer.write(task.toFileString() + "\n");

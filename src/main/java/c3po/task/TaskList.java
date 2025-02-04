@@ -1,6 +1,7 @@
 package c3po.task;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import c3po.exception.TaskNotFoundException;
 
@@ -35,6 +36,15 @@ public class TaskList {
      */
     public int size() {
         return this.tasks.size();
+    }
+
+    /**
+     * Returns a stream of tasks.
+     *
+     * @return A stream of tasks.
+     */
+    public Stream<Task> stream() {
+        return this.tasks.stream();
     }
 
     /**
@@ -131,11 +141,18 @@ public class TaskList {
      */
     public TaskList find(String... keywords) {
         ArrayList<Task> foundTasks = new ArrayList<>();
-        for (Task task : tasks) {
-            if (task.descriptionContainsAll(keywords)) {
-                foundTasks.add(task);
-            }
-        }
+        tasks.stream().filter(task -> task.descriptionContainsAll(keywords))
+                .forEach(foundTasks::add);
         return new TaskList(foundTasks);
+    }
+
+    /**
+     * Returns the index of the specified task.
+     *
+     * @param task The task to find.
+     * @return The index of the specified task.
+     */
+    public int indexOf(Task task) {
+        return this.tasks.indexOf(task);
     }
 }
