@@ -11,23 +11,22 @@ public class UnknownCommand extends Command {
     /**
      * Executes the command.
      *
-     * @param tasks   List of tasks.
-     * @param ui      User interface.
+     * @param tasks List of tasks.
+     * @param ui User interface.
      * @param storage Storage.
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        ui.showUnknownCommand();
+        this.response = ui.unknownCommand();
     }
 
     /**
-     * Returns the string representation of the command.
+     * Returns the type of command.
      *
-     * @return String representation of the command.
+     * @return Type of command.
      */
     @Override
-    public String getString() {
-        return "unknown";
+    public CommandEnum getCommandType() {
+        return CommandEnum.UNKNOWN;
     }
-
 }

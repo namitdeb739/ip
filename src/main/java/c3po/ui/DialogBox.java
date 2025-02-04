@@ -1,4 +1,4 @@
-package c3po.gui;
+package c3po.ui;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -19,6 +19,8 @@ import javafx.scene.layout.HBox;
  * containing text from the speaker.
  */
 public class DialogBox extends HBox {
+    private static final String FXML_FILE_PATH = "/view/DialogBox.fxml";
+
     @FXML
     private Label dialog;
     @FXML
@@ -27,7 +29,7 @@ public class DialogBox extends HBox {
     private DialogBox(String text, Image img) {
         try {
             FXMLLoader fxmlLoader =
-                    new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
+                    new FXMLLoader(MainWindow.class.getResource(DialogBox.FXML_FILE_PATH));
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
@@ -35,8 +37,8 @@ public class DialogBox extends HBox {
             e.printStackTrace();
         }
 
-        dialog.setText(text);
-        displayPicture.setImage(img);
+        this.dialog.setText(text);
+        this.displayPicture.setImage(img);
     }
 
     /**
@@ -45,38 +47,31 @@ public class DialogBox extends HBox {
     private void flip() {
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
         Collections.reverse(tmp);
-        getChildren().setAll(tmp);
-        setAlignment(Pos.TOP_LEFT);
-        dialog.getStyleClass().add("reply-label");
+        this.getChildren().setAll(tmp);
+        this.setAlignment(Pos.TOP_LEFT);
     }
 
+    /**
+     * Gets a dialog box for the user.
+     *
+     * @param text The text to display.
+     * @param img The image to display.
+     * @return The dialog box for the user.
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
 
-    public static DialogBox getC3PODialog(String text, Image img, String commandType) {
-        var db = new DialogBox(text, img);
+    /**
+     * Gets a dialog box for C3PO.
+     *
+     * @param response The text to display.
+     * @param img The image to display.
+     * @return The dialog box for C3PO.
+     */
+    public static DialogBox getC3PODialog(Response response, Image img) {
+        DialogBox db = new DialogBox(response.getMessage(), img);
         db.flip();
-        db.changeDialogStyle(commandType);
         return db;
     }
-
-
-
-    private void changeDialogStyle(String commandType) {
-        switch (commandType) {
-        case "AddCommand":
-            dialog.getStyleClass().add("add-label");
-            break;
-        case "ChangeMarkCommand":
-            dialog.getStyleClass().add("marked-label");
-            break;
-        case "DeleteCommand":
-            dialog.getStyleClass().add("delete-label");
-            break;
-        default:
-            // Do nothing
-        }
-    }
-
 }

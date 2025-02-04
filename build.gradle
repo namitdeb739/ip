@@ -49,7 +49,7 @@ test {
 }
 
 application {
-    mainClass.set("c3po.C3PO")
+    mainClass.set("c3po.ui.Launcher")
 }
 
 sourceSets {

@@ -7,9 +7,7 @@ import c3po.ui.UserInterface;
 /**
  * Represents a command to find tasks.
  */
-public class FindCommand extends Command {
-
-    private String keyword;
+public class FindCommand extends DesciptionCommand {
 
     /**
      * Constructs a find command with the specified keyword.
@@ -17,7 +15,7 @@ public class FindCommand extends Command {
      * @param keyword The keyword to search for.
      */
     public FindCommand(String keyword) {
-        this.keyword = keyword;
+        super(keyword);
     }
 
     /**
@@ -29,17 +27,17 @@ public class FindCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        TaskList foundTasks = tasks.find(this.keyword);
-        ui.find(foundTasks);
+        TaskList foundTasks = tasks.find(this.description);
+        this.response = ui.find(foundTasks);
     }
 
     /**
-     * Returns the string representation of the command.
+     * Returns the type of command.
      *
-     * @return String representation of the command.
+     * @return The type of command.
      */
     @Override
-    public String getString() {
-        return "find";
+    public CommandEnum getCommandType() {
+        return CommandEnum.FIND;
     }
 }

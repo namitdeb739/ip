@@ -1,43 +1,40 @@
 .label {
-  background: white;
-  -fx-background-color: background;
-  -fx-background-color: linear-gradient(to bottom right, #00ffbf, #00ddff);
-  -fx-border-color: #d55e00 #009e73 #cc79a7 #0072b2;
+  background-color: linear-gradient(to right, #003366, #0055aa);
+  -fx-background-color: linear-gradient(to right, #003366, #0055aa);
+  border-color: #00ccff;
+  -fx-border-color: #00ccff;
+  border-width: 2px;
   -fx-border-width: 2px;
-  -fx-background-radius: 1em 1em 0 1em;
-  -fx-border-radius: 1em 1em 0 1em;
-  -fx-padding: 6px;
-  -fx-border-insets: 0px 7px 0px 7px;
-  -fx-background-insets: 0px 7px 0px 7px;
-  -fx-text-fill: ladder(background, white 49%, black 50%);
+  -fx-background-radius: 2em;
+  border-radius: 2em;
+  -fx-border-radius: 2em;
+  padding: 10px;
+  -fx-padding: 10px;
+  -fx-text-fill: white;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 204, 255, 0.7), 10, 0, 0, 0);
+  -fx-padding: 15px;
+  -fx-padding: 15px;
+  font: bold 14px "Barmeno BQ Regular";
+  -fx-font: bold 14px "Barmeno BQ Regular";
 }
 
-.reply-label {
-  -fx-background-radius: 1em 1em 1em 0;
-  -fx-border-radius: 1em 1em 1em 0;
-}
-
-#displayPicture {
-  /* Shadow effect on image. */
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 5, 5);
-
-  /* Change size of image. */
-  -fx-scale-x: 1;
-  -fx-scale-y: 1;
-
-  /* Rotate image clockwise by degrees. */
+/* #displayPicture {
+  -fx-effect: dropshadow(gaussian, rgba(0, 204, 255, 0.7), 10, 0, 0, 0);
+  -fx-scale-x: 0.8;
+  -fx-scale-y: 0.8;
+  rotate: 0;
   -fx-rotate: 0;
-}
+  border-color: #00ccff;
+  -fx-border-color: #00ccff;
+  border-width: 2px;
+  -fx-border-width: 2px;
+  border-radius: 50%;
+  -fx-border-radius: 50%;
+  -fx-background-radius: 50%;
+  -fx-alignment: top-left;
+  -fx-translate-x: 5px;
+  -fx-translate-y: 5px;
+} */
 
-/* Paste this below reply-label */
-.add-label {
-    -fx-background-color: yellow;
-}
-
-.marked-label {
-    -fx-background-color: palegreen;
-}
-
-.delete-label {
-    -fx-background-color: lightpink;
-}

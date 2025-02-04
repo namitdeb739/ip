@@ -1,65 +1,90 @@
+@font-face {
+  font-family: "Barmeno BQ Regular";
+  src: url("fonts/BarmenoBQ-Regular.ttf") format("truetype");
+}
+
 .root {
-  main-color: rgb(
-    237,
-    255,
-    242
-  ); /* Create a looked-up color called "main-color" within root. */
-  -fx-background-image: url("../images/background.jpg"); /* Set image */
-  -fx-background-color: main-color;
-  -fx-background-size: stretch;
-  -fx-background-size: 400px 600px;
-  -fx-background-repeat: round;
+  background-color: linear-gradient(to bottom, #001a33, #002b55);
+  -fx-background-color: linear-gradient(to bottom, #001a33, #002b55);
+  background-image: url("../images/Background.png");
+  -fx-background-image: url("../images/Background.png");
+  background-size: cover;
+  -fx-background-size: cover;
+  background-repeat: no-repeat;
+  -fx-background-repeat: no-repeat;
 }
 
 .text-field {
-  -fx-background-color: #d9ffe2;
-  -fx-font: 20px "Arial";
+  background-color: #003366;
+  -fx-background-color: #003366;
+  -fx-text-fill: white;
+  font: 18px "Barmeno BQ Regular";
+  -fx-font: 18px "Barmeno BQ Regular";
+  border-color: #00ccff;
+  -fx-border-color: #00ccff;
+  border-width: 2px;
+  -fx-border-width: 2px;
+  -fx-background-radius: 1em;
+  border-radius: 1em;
+  -fx-border-radius: 1em;
+  padding: 8px;
+  -fx-padding: 8px;
 }
 
 .button {
-  -fx-background-color: mediumspringgreen;
-  -fx-font: italic bold 16px "Arial";
+  background-color: linear-gradient(to bottom, #004488, #0077cc);
+  -fx-background-color: linear-gradient(to bottom, #004488, #0077cc);
+  -fx-text-fill: white;
+  font: bold 16px "Barmeno BQ Regular";
+  -fx-font: bold 16px "Barmeno BQ Regular";
+  border-color: #00ccff;
+  -fx-border-color: #00ccff;
+  border-width: 2px;
+  -fx-border-width: 2px;
+  -fx-background-radius: 1em;
+  border-radius: 1em;
+  -fx-border-radius: 1em;
+  padding: 10px 15px;
+  -fx-padding: 10px 15px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 204, 255, 0.7), 10, 0, 0, 0);
+  transition: all 0.3s ease-in-out;
+  -fx-transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
-  -fx-background-color: cyan;
-  -fx-font-size: 18px;
+  background-color: linear-gradient(to bottom, #0077cc, #00aaff);
+  -fx-background-color: linear-gradient(to bottom, #0077cc, #00aaff);
+  font-size: 16px;
+  -fx-font-size: 16px;
 }
 
 .button:pressed {
-  -fx-background-color: orange;
-  -fx-font-size: 20px;
+  background-color: #ffcc00;
+  -fx-background-color: #ffcc00;
+  font-size: 16px;
+  -fx-font-size: 16px;
 }
 
 .scroll-pane,
 .scroll-pane .viewport {
+  background-color: transparent;
   -fx-background-color: transparent;
-  -fx-background-color: rgba(0, 0, 0, 0.5);
 }
 
 .scroll-bar {
-  -fx-font-size: 10px; /* Change width of scroll bar. */
-  -fx-background-color: main-color;
+  background-color: #002b55;
+  -fx-background-color: #002b55;
 }
 
 .scroll-bar .thumb {
-  -fx-background-color: #ff9cb4;
+  background-color: #00ccff;
+  -fx-background-color: #00ccff;
   -fx-background-radius: 1em;
 }
 
-/* Hides the increment and decrement buttons. */
 .scroll-bar .increment-button,
 .scroll-bar .decrement-button {
   -fx-pref-height: 0;
+  opacity: 0;
   -fx-opacity: 0;
-}
-
-.button:hover {
-  -fx-background-color: cyan;
-  -fx-font-size: 18px;
-}
-
-.button:pressed {
-  -fx-background-color: orange;
-  -fx-font-size: 20px;
 }

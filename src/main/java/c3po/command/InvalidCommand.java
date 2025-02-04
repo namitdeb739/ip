@@ -7,26 +7,45 @@ import c3po.ui.UserInterface;
 /**
  * This class is used to represent an invalid command.
  */
-public class InvalidCommand extends Command {
+public class InvalidCommand extends DesciptionCommand {
+    public static final String DEFAULT_INVALID_COMMAND_MESSAGE =
+            "I have a bad feeling about this...";
+
+    /**
+     * Constructs an invalid command.
+     */
+    public InvalidCommand() {
+        super(DEFAULT_INVALID_COMMAND_MESSAGE);
+    }
+
+    /**
+     * Constructs an invalid command with the specified description.
+     *
+     * @param description The description of the invalid command.
+     */
+    public InvalidCommand(String description) {
+        super(description);
+    }
+
     /**
      * Executes the invalid command.
      *
-     * @param tasks   The task list to manage.
-     * @param ui      The user interface to manage.
+     * @param tasks The task list to manage.
+     * @param ui The user interface to manage.
      * @param storage The storage to manage.
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        ui.requestInstructions();
+        this.response = ui.invalidCommand(this.description);
     }
 
     /**
-     * Returns the string representation of the command.
+     * Returns the type of command.
      *
-     * @return String representation of the command.
+     * @return The type of command.
      */
     @Override
-    public String getString() {
-        return "invalid";
+    public CommandEnum getCommandType() {
+        return CommandEnum.INVALID;
     }
 }

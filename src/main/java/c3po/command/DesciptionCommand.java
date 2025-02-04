@@ -3,7 +3,7 @@ package c3po.command;
 /**
  * Represents a command that adds a task to the task list.
  */
-public abstract class AddCommand extends Command {
+public abstract class DesciptionCommand extends Command {
     protected String description;
 
     /**
@@ -11,7 +11,7 @@ public abstract class AddCommand extends Command {
      *
      * @param description Description of the task.
      */
-    public AddCommand(String description) {
+    public DesciptionCommand(String description) {
         this.description = description;
     }
 }

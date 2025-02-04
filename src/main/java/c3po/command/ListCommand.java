@@ -12,23 +12,23 @@ public class ListCommand extends Command {
     /**
      * Executes the list command.
      *
-     * @param tasks   The task list to manage.
-     * @param ui      The user interface to manage.
+     * @param tasks The task list to manage.
+     * @param ui The user interface to manage.
      * @param storage The storage to manage.
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        ui.list(tasks);
+        this.response = ui.list(tasks);
     }
 
     /**
-     * Returns the string representation of the command.
+     * Returns the type of command.
      *
-     * @return String representation of the command.
+     * @return The type of command.
      */
     @Override
-    public String getString() {
-        return "list";
+    public CommandEnum getCommandType() {
+        return CommandEnum.LIST;
     }
 
 }
