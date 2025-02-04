@@ -20,8 +20,9 @@ public class ExitCommandTest extends IoCommandTest {
         this.tasks.add(new Todo("read book"));
         ExitCommand exitCommand = new ExitCommand();
         exitCommand.execute(this.tasks, this.ui, this.storage);
-        String expectedOutput = "Hooray! I have saved your tasks, sir.";
-        assertEquals(this.outputStreamCaptor.toString(), expectedOutput);
+        String expectedOutput = "Hooray! I have saved your tasks, sir.\n" + "1. [T][ ] read book\n"
+                + "Shutting up, sir.\n";
+        assertEquals(expectedOutput, this.outputStreamCaptor.toString());
     }
 
     /**

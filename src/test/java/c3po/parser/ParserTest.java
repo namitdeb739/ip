@@ -40,8 +40,7 @@ public class ParserTest {
     public void parse_emptyInput_printsEmptyInputExceptionMessage() {
         Parser.parse("");
         String expectedOutput =
-                "Excuse me, sir. Might I inquire what's going on? You seem to be requesting me to do nothing.\n"
-                        + "Please enter a command.";
+                "Excuse me, sir. Might I inquire what's going on? You seem to be requesting me to do nothing.";
         assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
     }
 

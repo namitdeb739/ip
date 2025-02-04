@@ -77,6 +77,9 @@ public class Storage {
         String savedTasks = "";
         try {
             if (!this.file.exists()) {
+                if (!this.file.getParentFile().exists()) {
+                    this.file.getParentFile().mkdirs();
+                }
                 this.file.createNewFile();
             } else {
                 this.file.delete();
@@ -84,7 +87,7 @@ public class Storage {
             }
 
             java.io.FileWriter writer = new java.io.FileWriter(this.file);
-            
+
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = tasks.get(i);
                 writer.write(task.toFileString() + "\n");
@@ -93,7 +96,8 @@ public class Storage {
             writer.close();
         } catch (java.io.IOException e) {
             savedTasks =
-                    "I'm afraid I cannot do that, sir. It appears my security clearance is insufficient.";
+                    "I'm afraid I cannot do that, sir. It appears my security clearance is insufficient.\n";
+            savedTasks += e.getMessage();
             return savedTasks;
         } catch (TaskNotFoundException e) {
             savedTasks = e.getMessage();

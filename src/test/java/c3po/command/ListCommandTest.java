@@ -22,8 +22,8 @@ public class ListCommandTest extends IoCommandTest {
         ListCommand listCommand = new ListCommand();
         listCommand.execute(this.tasks, this.ui, this.storage);
 
-        String expectedOutput =
-                "1. [T][ ] read book\n" + "2. [T][ ] write report\n" + "____________________";
+        String expectedOutput = "Here are your pending tasks, sir:\n" + "1. [T][ ] read book\n"
+                + "2. [T][ ] write report\n" + "____________________";
         assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
     }
 }

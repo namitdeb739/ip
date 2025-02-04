@@ -15,7 +15,7 @@ import c3po.ui.UserInterface;
  *
  */
 public abstract class CommandTest {
-    protected static final String TEST_FILE_PATH = "data/test/test_tasks.txt";
+    protected static final String TEST_FILE_PATH = "data/tests/test_tasks.txt";
     protected TaskList tasks;
     protected UserInterface ui;
     protected Storage storage;
