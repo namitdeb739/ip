@@ -7,15 +7,16 @@ import c3po.ui.UserInterface;
 /**
  * Represents a command to find tasks.
  */
-public class FindCommand extends DesciptionCommand {
+public class FindCommand extends Command {
+    private String[] description;
 
     /**
      * Constructs a find command with the specified keyword.
      *
-     * @param keyword The keyword to search for.
+     * @param keywords The keyword to search for.
      */
-    public FindCommand(String keyword) {
-        super(keyword);
+    public FindCommand(String... keywords) {
+        this.description = keywords;
     }
 
     /**
