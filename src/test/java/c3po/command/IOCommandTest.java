@@ -17,7 +17,7 @@ public abstract class IoCommandTest extends CommandTest {
      * Sets up the I/O for testing.
      */
     @BeforeEach
-    public void setUpIO() {
+    public void setUpIo() {
         System.setOut(new PrintStream(this.outputStreamCaptor));
     }
 
@@ -25,7 +25,7 @@ public abstract class IoCommandTest extends CommandTest {
      * Tears down the I/O after testing.
      */
     @AfterEach
-    public void tearDownIO() {
+    public void tearDownIo() {
         System.setOut(this.originalOut);
     }
 }
