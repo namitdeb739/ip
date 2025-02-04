@@ -70,15 +70,17 @@ public class Parser {
             }
         } catch (EmptyInputException e) {
             System.out.println(e.getMessage());
-            System.out.println("Please enter a command.");
+            return new InvalidCommand(e.getMessage());
         } catch (MissingFieldException e) {
             System.out.println(e.getMessage());
+            return new InvalidCommand(e.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return new InvalidCommand(e.getMessage());
         } catch (DateTimeException e) {
             System.out.println(e.getMessage());
+            return new InvalidCommand(e.getMessage());
         }
-        return new InvalidCommand();
     }
 
     private static Command parseFind(String details) {

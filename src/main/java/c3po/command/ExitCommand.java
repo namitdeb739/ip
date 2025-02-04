@@ -11,14 +11,14 @@ public class ExitCommand extends Command {
     /**
      * Executes the command to exit the chatbot.
      *
-     * @param tasks   List of tasks.
-     * @param ui      User interface.
+     * @param tasks List of tasks.
+     * @param ui User interface.
      * @param storage Storage.
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        storage.saveTasks(tasks);
-        ui.close();
+        String savedTasks = storage.saveTasks(tasks);
+        this.response = ui.close(savedTasks);
     }
 
     /**
@@ -30,4 +30,15 @@ public class ExitCommand extends Command {
     public boolean isExit() {
         return true;
     }
+
+    /**
+     * Returns the type of command.
+     *
+     * @return Type of command.
+     */
+    @Override
+    public CommandEnum getCommandType() {
+        return CommandEnum.BYE;
+    }
+
 }

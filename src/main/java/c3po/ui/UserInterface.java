@@ -10,12 +10,13 @@ import c3po.task.TaskList;
  * printing messages and reading input.
  */
 public class UserInterface {
-    private static final String logo =
+    private static final String LOGO =
             "" + "            .-.\n" + "           |o,o|\n" + "        ,| _\\=/_      .-''-.\n"
                     + "        ||/_/_\\_\\    /[] _ _\\\n" + "        |_/|(_)|\\  _|_o_LII|_\n"
                     + "           \\._./// / | ==== | \\\n" + "           |\\_/|'` |_| ==== |_|\n"
                     + "           |_|_|    ||' ||  ||\n" + "           |-|-|    ||LI  o ||\n"
                     + "           |_|_|    ||'----'||\n" + "          /_/ \\_\\  /__|    |__\\n";
+    private static final String INSTRSUCTION_REQUEST = "How may I assist you, sir?";
     private Scanner scanner;
 
     /**
@@ -28,9 +29,14 @@ public class UserInterface {
     /**
      * Shows a loading error message.
      */
-    public void showLoadingError() {
-        System.out.println(
-                "Oh my! It seems that my memory banks are corrupted. I'm afraid I cannot recall your prior tasks.");
+    public Response showLoadingError() {
+        String message =
+                "Oh my! It seems that my memory banks are corrupted. I'm afraid I cannot recall your prior tasks.";
+
+        Response response = new Response(message);
+        response.printMessage();
+
+        return response;
     }
 
     /**
@@ -38,22 +44,44 @@ public class UserInterface {
      *
      * @param tasks The task list to manage.
      */
-    public void open(TaskList tasks) {
+    public Response open(TaskList tasks) {
         this.printDivider();
-        System.out.println(UserInterface.logo);
-        System.out.println("Hello, I am C-3PO, human-cyborg relations.");
-        System.out.println("I am fluent in over six million forms of communication.");
-        System.out.println();
 
-        if (tasks.size() == 0) {
-            System.out.println("You have no pending tasks, sir.");
-        } else {
-            System.out.println("Here are your pending tasks, sir:");
-            this.list(tasks);
-        }
+        String message = "";
+        message += UserInterface.LOGO + "\n";
+        message += "Hello, I am C-3PO, human-cyborg relations.\n";
+        message += "I am fluent in over six million forms of communication.\n\n";
+        message += tasks.size() == 0 ? "You have no pending tasks, sir."
+                : "Here are your pending tasks, sir:\n" + tasks;
+        message += "\n\n" + UserInterface.INSTRSUCTION_REQUEST;
 
-        System.out.println();
-        this.requestInstructions();
+
+        Response response = new Response(message);
+        response.printMessage();
+
+        return response;
+    }
+
+    /**
+     * Opens the user interface in GUI mode.
+     *
+     * @param tasks The task list to manage.
+     */
+    public Response openGui(TaskList tasks) {
+        this.printDivider();
+
+        String message = "";
+        message += "Hello, I am C-3PO, human-cyborg relations.\n";
+        message += "I am fluent in over six million forms of communication.\n\n";
+        message += tasks.size() == 0 ? "You have no pending tasks, sir."
+                : "Here are your pending tasks, sir:\n" + tasks;
+        message += "\n\n" + UserInterface.INSTRSUCTION_REQUEST;
+
+
+        Response response = new Response(message);
+        response.printMessage();
+
+        return response;
     }
 
     /**
@@ -68,8 +96,14 @@ public class UserInterface {
     /**
      * Closes the user interface.
      */
-    public void close() {
-        System.out.println("Shutting up, sir.");
+    public Response close(String savedTasks) {
+        String message = savedTasks + "\n";
+        message += "Shutting up, sir.";
+
+        Response response = new Response(message);
+        response.printMessage();
+
+        return response;
     }
 
     /**
@@ -77,9 +111,15 @@ public class UserInterface {
      *
      * @param tasks The task list to list.
      */
-    public void list(TaskList tasks) {
-        System.out.println(tasks);
+    public Response list(TaskList tasks) {
+        String message = tasks.size() == 0 ? "You have no pending tasks, sir."
+                : "Here are your pending tasks, sir:\n" + tasks;
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
     }
 
     /**
@@ -88,11 +128,17 @@ public class UserInterface {
      * @param task The task to add.
      * @param size The size of the task list.
      */
-    public void add(Task task, int size) {
-        System.out.println("Very well, sir, I am now adding this task:");
-        System.out.println(task);
-        System.out.println("Now you have " + size + " tasks in the list.");
+    public Response add(Task task, int size) {
+        String message = "";
+        message += "Very well, sir, I am now adding this task:\n";
+        message += task + "\n";
+        message += "Now you have " + size + " tasks in the list.";
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
     }
 
     /**
@@ -100,10 +146,16 @@ public class UserInterface {
      *
      * @param task The task to mark.
      */
-    public void mark(Task task) {
-        System.out.println("Oh my! The odds of successfully completing this task were 3720 to 1.");
-        System.out.println(task);
+    public Response mark(Task task) {
+        String message = "";
+        message += "Oh my! The odds of successfully completing this task were 3720 to 1.\n";
+        message += task;
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
     }
 
     /**
@@ -111,10 +163,16 @@ public class UserInterface {
      *
      * @param task The task to unmark.
      */
-    public void unmark(Task task) {
-        System.out.println("I really don't see how that's going to help.");
-        System.out.println(task);
+    public Response unmark(Task task) {
+        String message = "";
+        message += "I really don't see how that's going to help.\n";
+        message += task;
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
     }
 
     /**
@@ -123,40 +181,44 @@ public class UserInterface {
      * @param task The task to delete.
      * @param size The size of the task list.
      */
-    public void delete(Task task, int size) {
-        System.out.println(
-                "Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:");
-        System.out.println(task);
-        System.out.println("Now you have " + size + " tasks in the list.");
+    public Response delete(Task task, int size) {
+        String message = "";
+        message +=
+                "Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:\n";
+        message += task + "\n";
+        message += "Now you have " + size + " tasks in the list.";
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
     }
 
     /**
      * Shows an error message when a task is not found.
      */
-    public void showTaskNotFoundError() {
-        System.out.println("I'm terribly sorry, sir, but I cannot find this task.");
+    public Response taskNotFoundError() {
+        String message = "I'm terribly sorry, sir, but I cannot find this task.";
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
     }
 
     /**
      * Shows an error message when a command is not recognised.
      */
-    public void showUnknownCommand() {
-        System.out.println("I'm terribly sorry, sir, but I do not understand this command.");
-        this.printDivider();
-    }
+    public Response unknownCommand() {
+        String message = "I'm terribly sorry, sir, but I do not understand this command.";
 
-    /**
-     * Requests for instructions.
-     */
-    public void requestInstructions() {
-        System.out.println("How may I assist you, sir?");
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
-    }
 
-    private void printDivider() {
-        System.out.println("____________________");
+        return response;
     }
 
     /**
@@ -164,18 +226,55 @@ public class UserInterface {
      *
      * @param foundTasks The tasks found.
      */
-    public void find(TaskList foundTasks) {
+    public Response find(TaskList foundTasks) {
+        String message = "";
         if (foundTasks.size() == 0) {
-            System.out
-                    .println("Perhaps I can find some clue in these volumes that will save us all! "
-                            + "Now let me see, this looks like... yes... two cups... "
-                            + "balka greens... add a pinch of—oh, blast it all! "
-                            + "This is a cookbook!");
+            message += "Perhaps I can find some clue in these volumes that will save us all! "
+                    + "Now let me see, this looks like... yes... two cups... "
+                    + "balka greens... add a pinch of—oh, blast it all! " + "This is a cookbook!";
         } else {
-            System.out.println("I've found it! :");
-            System.out.println(foundTasks);
+            message += "I've found it! :\n";
+            message += foundTasks;
         }
+
+        Response response = new Response(message);
+        response.printMessage();
         this.printDivider();
+
+        return response;
+    }
+
+    /**
+     * Requests for instructions.
+     */
+    public Response requestInstructions() {
+        String message = UserInterface.INSTRSUCTION_REQUEST;
+
+        Response response = new Response(message);
+        response.printMessage();
+        this.printDivider();
+
+        return response;
+    }
+
+    private void printDivider() {
+        System.out.println("____________________");
+    }
+
+    /**
+     * Generates a response for an invalid command.
+     *
+     * @param description The description of the invalid command.
+     */
+    public Response invalidCommand(String description) {
+        String message = description + "\n";
+        message += UserInterface.INSTRSUCTION_REQUEST;
+
+        Response response = new Response(message);
+        response.printMessage();
+        this.printDivider();
+
+        return response;
     }
 
 }

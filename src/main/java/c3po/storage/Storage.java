@@ -72,7 +72,8 @@ public class Storage {
      *
      * @param tasks The tasks to save.
      */
-    public void saveTasks(TaskList tasks) {
+    public String saveTasks(TaskList tasks) {
+        String savedTasks = "";
         try {
             if (!this.file.exists()) {
                 this.file.createNewFile();
@@ -90,15 +91,22 @@ public class Storage {
 
             writer.close();
         } catch (java.io.IOException e) {
-            System.out.println(
-                    "I'm afraid I cannot do that, sir. It appears my security clearance is insufficient.");
+            savedTasks =
+                    "I'm afraid I cannot do that, sir. It appears my security clearance is insufficient.";
+            return savedTasks;
         } catch (TaskNotFoundException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("Hooray! I have saved your tasks, sir.");
+            savedTasks = e.getMessage();
+            return savedTasks;
         }
 
-        System.out.println(tasks);
+        if (tasks.size() == 0) {
+            savedTasks = "You have no tasks to save, sir.";
+            return savedTasks;
+        }
+
+        savedTasks += "Hooray! I have saved your tasks, sir.\n";
+        savedTasks += tasks.toString();
+        return savedTasks;
     }
 
 

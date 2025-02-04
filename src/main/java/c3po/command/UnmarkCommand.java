@@ -22,18 +22,27 @@ public class UnmarkCommand extends IndexedCommand {
     /**
      * Executes the command to unmark a task.
      *
-     * @param tasks   List of tasks.
-     * @param ui      User interface.
+     * @param tasks List of tasks.
+     * @param ui User interface.
      * @param storage Storage.
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
         try {
             Task task = tasks.unmark(this.index);
-            ui.unmark(task);
+            this.response = ui.unmark(task);
         } catch (TaskNotFoundException e) {
-            ui.showTaskNotFoundError();
+            this.response = ui.taskNotFoundError();
         }
     }
 
+    /**
+     * Returns the type of command.
+     *
+     * @return Type of command.
+     */
+    @Override
+    public CommandEnum getCommandType() {
+        return CommandEnum.UNMARK;
+    }
 }

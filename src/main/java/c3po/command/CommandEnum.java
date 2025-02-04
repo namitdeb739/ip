@@ -4,7 +4,7 @@ package c3po.command;
  * Represents the command that the user inputs.
  */
 public enum CommandEnum {
-    BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, FIND, UNKNOWN;
+    GREET, BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, FIND, UNKNOWN, INVALID;
 
     /**
      * Returns the Command enum value corresponding to the specified string.
@@ -28,5 +28,14 @@ public enum CommandEnum {
     public boolean requiresDescription() {
         return this == TODO || this == DEADLINE || this == EVENT || this == MARK || this == DELETE
                 || this == FIND;
+    }
+
+    /**
+     * Returns whether the command requires a date and time.
+     *
+     * @return Whether the command requires a date and time.
+     */
+    public boolean isExit() {
+        return this == BYE;
     }
 }
