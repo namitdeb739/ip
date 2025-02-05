@@ -13,7 +13,7 @@ import c3po.task.Todo;
 /**
  * Tests the TodoCommand class.
  */
-public class TodoCommandTest extends IoCommandTest {
+public class TodoCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method.

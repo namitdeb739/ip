@@ -12,7 +12,7 @@ import c3po.task.Todo;
 /**
  * Tests the FindCommand class.
  */
-public class FindCommandTest extends IoCommandTest {
+public class FindCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method of FindCommand if it finds tasks with the specified keyword.

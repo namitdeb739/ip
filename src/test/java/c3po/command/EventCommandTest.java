@@ -13,7 +13,7 @@ import c3po.task.Event;
 /**
  * Tests for EventCommand.
  */
-public class EventCommandTest extends IoCommandTest {
+public class EventCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method of EventCommand if it adds an event task to the task list.

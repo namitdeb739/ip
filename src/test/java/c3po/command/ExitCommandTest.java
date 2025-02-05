@@ -10,7 +10,7 @@ import c3po.task.Todo;
 /**
  * Tests for ExitCommand.
  */
-public class ExitCommandTest extends IoCommandTest {
+public class ExitCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method of ExitCommand if it saves the tasks and closes the UI.

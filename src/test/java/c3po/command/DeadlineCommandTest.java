@@ -16,7 +16,7 @@ import c3po.task.Task;
 /**
  * Tests for DeadlineCommand.
  */
-public class DeadlineCommandTest extends IoCommandTest {
+public class DeadlineCommandTest extends InputOutputCommandTest {
 
     private DeadlineCommand deadlineCommand;
 

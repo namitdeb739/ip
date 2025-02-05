@@ -12,7 +12,7 @@ import c3po.task.Todo;
 /**
  * Tests for MarkCommand.
  */
-public class MarkCommandTest extends IoCommandTest {
+public class MarkCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method of MarkCommand if it marks a task as done.

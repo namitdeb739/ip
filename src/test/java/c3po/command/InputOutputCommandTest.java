@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 /**
  * Abstract class for command tests that involve I/O.
  */
-public abstract class IoCommandTest extends CommandTest {
+public abstract class InputOutputCommandTest extends CommandTest {
     protected final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 

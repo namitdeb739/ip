@@ -12,7 +12,7 @@ import c3po.task.Todo;
 /**
  * Tests the UnmarkCommand class.
  */
-public class UnmarkCommandTest extends IoCommandTest {
+public class UnmarkCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method with a valid index.

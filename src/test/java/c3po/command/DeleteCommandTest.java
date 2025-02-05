@@ -10,7 +10,7 @@ import c3po.task.Todo;
 /**
  * Tests for DeleteCommand.
  */
-public class DeleteCommandTest extends IoCommandTest {
+public class DeleteCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method of DeleteCommand if it deletes a task from the task list.

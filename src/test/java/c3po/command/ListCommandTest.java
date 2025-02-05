@@ -9,7 +9,7 @@ import c3po.task.Todo;
 /**
  * Tests for ListCommand.
  */
-public class ListCommandTest extends IoCommandTest {
+public class ListCommandTest extends InputOutputCommandTest {
 
     /**
      * Tests the execute method of ListCommand if it lists all tasks in the task list.
