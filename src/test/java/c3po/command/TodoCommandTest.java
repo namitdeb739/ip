@@ -37,5 +37,28 @@ public class TodoCommandTest extends InputOutputCommandTest {
                 + "[T][ ] read book\nNow you have 1 tasks in the list.\n" + "____________________";
         assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
     }
+
+    /**
+     * Tests the execute method with tags.
+     */
+    @Test
+    public void execute_addsTodoTaskWithTags() {
+        TodoCommand todoCommand = new TodoCommand("read book #leisure #reading");
+        todoCommand.execute(this.tasks, this.ui, this.storage);
+
+        assertEquals(1, this.tasks.size());
+        Task task = null;
+        try {
+            task = this.tasks.get(0);
+        } catch (TaskNotFoundException e) {
+            fail("Task not found: " + e.getMessage());
+        }
+        assertTrue(task instanceof Todo);
+        assertEquals("[T][ ] read book #leisure #reading", task.toString());
+
+        String expectedOutput = "Very well, sir, I am now adding this task:\n"
+                + "[T][ ] read book #leisure #reading\nNow you have 1 tasks in the list.\n" + "____________________";
+        assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
+    }
 }
 

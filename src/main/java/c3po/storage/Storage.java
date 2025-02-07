@@ -119,20 +119,32 @@ public class Storage {
         String taskType = taskField[0].strip();
         String taskDescription = taskField[2].strip();
 
+        String[] tags = new String[0];
+        if (taskField.length > 3) {
+            String[] potentialTags = taskField[taskField.length - 1].strip().split(" ");
+            ArrayList<String> tagList = new ArrayList<>();
+            for (String tag : potentialTags) {
+                if (tag.startsWith("#")) {
+                    tagList.add(tag.substring(1));
+                }
+            }
+            tags = tagList.toArray(new String[0]);
+        }
+
         // Uninitialised but safe as either it will be
         // initialised in the switch statement or an
         // exception will be thrown
         Task task;
         switch (taskType) {
         case "T":
-            task = new Todo(taskDescription);
+            task = new Todo(taskDescription, tags);
             break;
         case "D":
             if (taskField.length < 4) {
                 throw new IllegalArgumentException();
             }
             LocalDateTime by = LocalDateTime.parse(taskField[3].strip());
-            task = new Deadline(taskDescription, by);
+            task = new Deadline(taskDescription, by, tags);
             break;
         case "E":
             if (taskField.length < 5) {
@@ -140,7 +152,7 @@ public class Storage {
             }
             LocalDateTime from = LocalDateTime.parse(taskField[3].strip());
             LocalDateTime to = LocalDateTime.parse(taskField[4].strip());
-            task = new Event(taskDescription, from, to);
+            task = new Event(taskDescription, from, to, tags);
             break;
         default:
             throw new IllegalArgumentException();
