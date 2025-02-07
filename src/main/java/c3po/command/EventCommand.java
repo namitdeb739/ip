@@ -11,7 +11,7 @@ import c3po.ui.UserInterface;
 /**
  * Represents a command to add an event task.
  */
-public class EventCommand extends DesciptionCommand {
+public class EventCommand extends CreateTaskCommand {
     private LocalDateTime from;
     private LocalDateTime to;
 
@@ -21,9 +21,10 @@ public class EventCommand extends DesciptionCommand {
      * @param description Description of the task.
      * @param from Start time of the task.
      * @param to End time of the task.
+     * @param tags Tags of the task.
      */
-    public EventCommand(String description, LocalDateTime from, LocalDateTime to) {
-        super(description);
+    public EventCommand(String description, LocalDateTime from, LocalDateTime to, String... tags) {
+        super(description, tags);
         this.from = from;
         this.to = to;
     }
@@ -37,7 +38,7 @@ public class EventCommand extends DesciptionCommand {
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        Task task = new Event(this.description, this.from, this.to);
+        Task task = new Event(this.description, this.from, this.to, this.tags);
         tasks.add(task);
         this.response = ui.add(task, tasks.size());
     }

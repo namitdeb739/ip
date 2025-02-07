@@ -11,7 +11,7 @@ import c3po.ui.UserInterface;
 /**
  * Represents a command to add a deadline task.
  */
-public class DeadlineCommand extends DesciptionCommand {
+public class DeadlineCommand extends CreateTaskCommand {
     private LocalDateTime by;
 
     /**
@@ -19,9 +19,10 @@ public class DeadlineCommand extends DesciptionCommand {
      *
      * @param description Description of the task.
      * @param by Deadline of the task.
+     * @param tags Tags of the task.
      */
-    public DeadlineCommand(String description, LocalDateTime by) {
-        super(description);
+    public DeadlineCommand(String description, LocalDateTime by, String... tags) {
+        super(description, tags);
         this.by = by;
     }
 
@@ -34,7 +35,7 @@ public class DeadlineCommand extends DesciptionCommand {
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        Task task = new Deadline(this.description, this.by);
+        Task task = new Deadline(this.description, this.by, this.tags);
         tasks.add(task);
         this.response = ui.add(task, tasks.size());
     }

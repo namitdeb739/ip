@@ -9,14 +9,15 @@ import c3po.ui.UserInterface;
 /**
  * Represents a command to add a todo task.
  */
-public class TodoCommand extends DesciptionCommand {
+public class TodoCommand extends CreateTaskCommand {
     /**
      * Constructs a TodoCommand.
      *
      * @param description Description of the task.
+     * @param tags Tags of the task.
      */
-    public TodoCommand(String description) {
-        super(description);
+    public TodoCommand(String description, String... tags) {
+        super(description, tags);
     }
 
     /**
@@ -28,7 +29,7 @@ public class TodoCommand extends DesciptionCommand {
      */
     @Override
     public void execute(TaskList tasks, UserInterface ui, Storage storage) {
-        Task task = new Todo(this.description);
+        Task task = new Todo(this.description, this.tags);
         tasks.add(task);
         this.response = ui.add(task, tasks.size());
     }

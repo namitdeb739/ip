@@ -3,6 +3,7 @@ package c3po.parser;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 
 import c3po.command.Command;
 import c3po.command.CommandEnum;
@@ -147,6 +148,11 @@ public class Parser {
 
         String[] eventFields = details.split(" /from | /to ");
         String eventDetails = eventFields[0];
+
+        String[] tags = details.split(" ");
+        tags = Arrays.stream(tags).filter(word -> word.startsWith("#"))
+                .map(word -> word.substring(1)).toArray(String[]::new);
+
         try {
             LocalDateTime from = LocalDateTime.parse(eventFields[1],
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
@@ -156,7 +162,7 @@ public class Parser {
                 throw new IllegalArgumentException(
                         "The start date/time cannot be after the end date/time.");
             }
-            return new EventCommand(eventDetails, from, to);
+            return new EventCommand(eventDetails, from, to, tags);
         } catch (DateTimeParseException e) {
             throw new DateTimeException(eventFields[1] + " or " + eventFields[2]);
         }
@@ -187,10 +193,15 @@ public class Parser {
 
         String deadlineDetails = deadlineFields[0];
         String dateTimeString = deadlineFields[1];
+
+        String[] tags = details.split(" ");
+        tags = Arrays.stream(tags).filter(word -> word.startsWith("#"))
+                .map(word -> word.substring(1)).toArray(String[]::new);
+
         try {
             LocalDateTime by = LocalDateTime.parse(dateTimeString,
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            return new DeadlineCommand(deadlineDetails, by);
+            return new DeadlineCommand(deadlineDetails, by, tags);
         } catch (DateTimeParseException e) {
             throw new DateTimeException(dateTimeString);
         }
@@ -201,10 +212,17 @@ public class Parser {
     }
 
     private static Command parseTodo(String details) throws MissingFieldException {
-        String todoDetails = details;
+        String todoDetails = details.split("#")[0].strip();
+
+        String[] tags = details.split(" ");
+        tags = Arrays.stream(tags)
+                 .filter(word -> word.startsWith("#"))
+                 .map(word -> word.substring(1))
+                 .toArray(String[]::new);
+
         if (todoDetails.isEmpty() || todoDetails.isBlank()) {
             throw new MissingFieldException("description");
         }
-        return new TodoCommand(todoDetails);
+        return new TodoCommand(todoDetails, tags);
     }
 }
