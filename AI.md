@@ -2,7 +2,7 @@
 
 ## General
 
-Copilot completions were used to help repetitive elements - once I typed code in a certain format style for the UI, if repetitive pieces of code such as overloaded method signatures were present copilot aided in this, speeding up the process.
+Copilot completions were used to help repetitive elements - once I typed code in a certain format style for the UI, if repetitive pieces of code such as overloaded method signatures were present copilot aided in this, speeding up the process. This was similarly done for javadocs which had repetitive formats.
 
 ## A-MoreTesting & A-JUnit
 
