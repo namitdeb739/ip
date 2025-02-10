@@ -59,9 +59,11 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = this.userInput.getText();
-        Response response = this.c3po.getResponse(input);
+        Response response = this.c3po.getResponse(input);;
         this.dialogContainer.getChildren().addAll(DialogBox.getUserDialog(input, this.userImage),
-                DialogBox.getC3PODialog(response, this.c3poImage));
+                this.c3po.getMostRecentCommandType().isError()
+                        ? DialogBox.getC3POErrorMessage(response, this.c3poImage)
+                        : DialogBox.getC3PODialog(response, this.c3poImage));
         this.userInput.clear();
 
         CommandEnum commandType = this.c3po.getMostRecentCommandType();

@@ -38,4 +38,13 @@ public enum CommandEnum {
     public boolean isExit() {
         return this == BYE;
     }
+
+    /**
+     * Returns whether the command is invalid.
+     *
+     * @return Whether the command is invalid.
+     */
+    public boolean isError() {
+        return this == INVALID || this == UNKNOWN;
+    }
 }
