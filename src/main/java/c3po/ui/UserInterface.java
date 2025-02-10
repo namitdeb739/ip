@@ -52,7 +52,7 @@ public class UserInterface {
         message += "Hello, I am C-3PO, human-cyborg relations.\n";
         message += "I am fluent in over six million forms of communication.\n\n";
         message += tasks.size() == 0 ? "You have no pending tasks, sir."
-                : String.format("Here are your pending tasks, sir:\n %s", tasks);
+                : String.format("Here are your pending tasks, sir:\n%s", tasks);
         message += String.format("\n\n%s", UserInterface.INSTRSUCTION_REQUEST);
 
 
@@ -74,7 +74,7 @@ public class UserInterface {
         message += "Hello, I am C-3PO, human-cyborg relations.\n";
         message += "I am fluent in over six million forms of communication.\n\n";
         message += tasks.size() == 0 ? "You have no pending tasks, sir."
-                : String.format("Here are your pending tasks, sir:\n %s", tasks);
+                : String.format("Here are your pending tasks, sir:\n%s", tasks);
         message += String.format("\n\n%s", UserInterface.INSTRSUCTION_REQUEST);
 
 
@@ -113,7 +113,7 @@ public class UserInterface {
      */
     public Response list(TaskList tasks) {
         String message = tasks.size() == 0 ? "You have no pending tasks, sir."
-                : String.format("Here are your pending tasks, sir:\n %s", tasks);
+                : String.format("Here are your pending tasks, sir:\n%s", tasks);
 
         Response response = new Response(message);
         response.printMessage();
