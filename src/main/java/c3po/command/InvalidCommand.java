@@ -8,7 +8,7 @@ import c3po.ui.UserInterface;
  * This class is used to represent an invalid command.
  */
 public class InvalidCommand extends DesciptionCommand {
-    public static final String DEFAULT_INVALID_COMMAND_MESSAGE =
+    private static final String DEFAULT_INVALID_COMMAND_MESSAGE =
             "I have a bad feeling about this...";
 
     /**

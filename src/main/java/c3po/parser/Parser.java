@@ -164,7 +164,7 @@ public class Parser {
             }
             return new EventCommand(eventDetails, from, to, tags);
         } catch (DateTimeParseException e) {
-            throw new DateTimeException(eventFields[1] + " or " + eventFields[2]);
+            throw new DateTimeException(String.format("%s or %s", eventFields[1], eventFields[2]));
         }
     }
 
@@ -215,10 +215,8 @@ public class Parser {
         String todoDetails = details.split("#")[0].strip();
 
         String[] tags = details.split(" ");
-        tags = Arrays.stream(tags)
-                 .filter(word -> word.startsWith("#"))
-                 .map(word -> word.substring(1))
-                 .toArray(String[]::new);
+        tags = Arrays.stream(tags).filter(word -> word.startsWith("#"))
+                .map(word -> word.substring(1)).toArray(String[]::new);
 
         if (todoDetails.isEmpty() || todoDetails.isBlank()) {
             throw new MissingFieldException("description");

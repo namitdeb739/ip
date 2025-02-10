@@ -54,7 +54,7 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        return "[" + getStatusIcon() + "] " + description;
+        return String.format("[%s] %s", getStatusIcon(), this.description);
     }
 
     /**
@@ -85,7 +85,7 @@ public abstract class Task {
      * @param tags The tags to search for.
      * @return True if the task has all the specified tags.
      */
-    public boolean hasTags(String... tags) {
+    public boolean containsTags(String... tags) {
         for (String tag : tags) {
             if (!this.tags.contains(tag)) {
                 return false;

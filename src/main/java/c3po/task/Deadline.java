@@ -29,9 +29,9 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: "
-                + this.by.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")) + ")"
-                + (this.hasTags() ? " " + this.tagString() : "");
+        return String.format("[D]%s (by: %s)%s", super.toString(),
+                this.by.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
+                this.hasTags() ? String.format(" %s", this.tagString()) : "");
     }
 
     /**
@@ -41,7 +41,8 @@ public class Deadline extends Task {
      */
     @Override
     public String toFileString() {
-        return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by
-                + (this.hasTags() ? " | " + this.tagString() : "");
+        return String.format("D | %d | %s | %s%s", this.isDone ? 1 : 0, this.description,
+                this.by.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
+                this.hasTags() ? String.format(" | %s", this.tagString()) : "");
     }
 }

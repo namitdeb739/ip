@@ -10,7 +10,8 @@ public class MissingFieldException extends Exception {
      * @param field The field that is missing.
      */
     public MissingFieldException(String field) {
-        super("My sincerest apologies, but the field '" + field
-                + "' seems to be missing. Let's try that again, shall we?");
+        super(String.format(
+                "My sincerest apologies, but the field '%s' seems to be missing. Let's try that again, shall we?",
+                field));
     }
 }

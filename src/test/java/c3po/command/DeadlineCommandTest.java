@@ -40,7 +40,7 @@ public class DeadlineCommandTest extends InputOutputCommandTest {
             assertTrue(task instanceof Deadline);
             assertEquals("[D][ ] Finish project (by: 10 Oct 2023 23:59)", task.toString());
         } catch (TaskNotFoundException e) {
-            fail("Task not found: " + e.getMessage());
+            fail(String.format("Task not found: %s", e.getMessage()));
         }
     }
 

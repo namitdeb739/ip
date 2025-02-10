@@ -52,8 +52,8 @@ public class UserInterface {
         message += "Hello, I am C-3PO, human-cyborg relations.\n";
         message += "I am fluent in over six million forms of communication.\n\n";
         message += tasks.size() == 0 ? "You have no pending tasks, sir."
-                : "Here are your pending tasks, sir:\n" + tasks;
-        message += "\n\n" + UserInterface.INSTRSUCTION_REQUEST;
+                : String.format("Here are your pending tasks, sir:\n %s", tasks);
+        message += String.format("\n\n%s", UserInterface.INSTRSUCTION_REQUEST);
 
 
         Response response = new Response(message);
@@ -74,8 +74,8 @@ public class UserInterface {
         message += "Hello, I am C-3PO, human-cyborg relations.\n";
         message += "I am fluent in over six million forms of communication.\n\n";
         message += tasks.size() == 0 ? "You have no pending tasks, sir."
-                : "Here are your pending tasks, sir:\n" + tasks;
-        message += "\n\n" + UserInterface.INSTRSUCTION_REQUEST;
+                : String.format("Here are your pending tasks, sir:\n %s", tasks);
+        message += String.format("\n\n%s", UserInterface.INSTRSUCTION_REQUEST);
 
 
         Response response = new Response(message);
@@ -113,7 +113,7 @@ public class UserInterface {
      */
     public Response list(TaskList tasks) {
         String message = tasks.size() == 0 ? "You have no pending tasks, sir."
-                : "Here are your pending tasks, sir:\n" + tasks;
+                : String.format("Here are your pending tasks, sir:\n %s", tasks);
 
         Response response = new Response(message);
         response.printMessage();
@@ -132,7 +132,7 @@ public class UserInterface {
         String message = "";
         message += "Very well, sir, I am now adding this task:\n";
         message += task + "\n";
-        message += "Now you have " + size + " tasks in the list.";
+        message += String.format("Now you have %d tasks in the list.", size);
 
         Response response = new Response(message);
         response.printMessage();
@@ -186,7 +186,7 @@ public class UserInterface {
         message +=
                 "Surrender is a perfectly acceptable alternative in extreme circumstances. I have deleted this task:\n";
         message += task + "\n";
-        message += "Now you have " + size + " tasks in the list.";
+        message += String.format("Now you have %d tasks in the list.", size);
 
         Response response = new Response(message);
         response.printMessage();
@@ -231,7 +231,7 @@ public class UserInterface {
         if (foundTasks.size() == 0) {
             message += "Perhaps I can find some clue in these volumes that will save us all! "
                     + "Now let me see, this looks like... yes... two cups... "
-                    + "balka greens... add a pinch of—oh, blast it all! " + "This is a cookbook!";
+                    + "balka greens... add a pinch of—oh, blast it all! This is a cookbook!";
         } else {
             message += "I've found it! :\n";
             message += foundTasks;

@@ -21,7 +21,8 @@ public class Todo extends Task {
      */
     @Override
     public String toString() {
-        return "[T]" + super.toString() + (this.hasTags() ? " " + this.tagString() : "");
+        return String.format("[T]%s%s", super.toString(),
+                this.hasTags() ? String.format(" %s", this.tagString()) : "");
     }
 
     /**
@@ -31,7 +32,7 @@ public class Todo extends Task {
      */
     @Override
     public String toFileString() {
-        return "T | " + (this.isDone ? "1" : "0") + " | " + this.description
-                + (this.hasTags() ? " | " + this.tagString() : "");
+        return String.format("T | %d | %s%s", this.isDone ? 1 : 0, this.description,
+                this.hasTags() ? String.format(" | %s", this.tagString()) : "");
     }
 }

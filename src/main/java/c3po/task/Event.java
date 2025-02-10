@@ -31,10 +31,10 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (on: "
-                + this.from.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")) + " to "
-                + this.to.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")) + ")"
-                + (this.hasTags() ? " " + this.tagString() : "");
+        return String.format("[E]%s (on: %s to %s)%s", super.toString(),
+                this.from.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
+                this.to.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
+                this.hasTags() ? String.format(" %s", this.tagString()) : "");
     }
 
     /**
@@ -44,7 +44,9 @@ public class Event extends Task {
      */
     @Override
     public String toFileString() {
-        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from
-                + " | " + this.to + (this.hasTags() ? " | " + this.tagString() : "");
+        return String.format("E | %d | %s | %s | %s%s", this.isDone ? 1 : 0, this.description,
+                this.from.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
+                this.to.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
+                this.hasTags() ? String.format(" | %s", this.tagString()) : "");
     }
 }
