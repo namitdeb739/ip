@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests the UserInterface class.
+ *
+ * Github Copilot was used to aid in developing tests using the ByteArrayInputStream and ByteArrayOutputStream classes.
  */
 public class UserInterfaceTest {
 
