@@ -40,8 +40,8 @@
 }
 
 .error-reply-label {
-  background-color: linear-gradient(to right, #ff4d4d, #cc3333);
-  -fx-background-color: linear-gradient(to right, #ff4d4d, #cc3333);
+  background-color: linear-gradient(to right, #cc3333, #ff4444);
+  -fx-background-color: linear-gradient(to right, #cc3333, #ff4444);
   border-color: #ff9999;
   -fx-border-color: #ff9999;
   border-width: 3px;
@@ -60,7 +60,6 @@
   font: bold 14px "Barmeno BQ Regular";
   -fx-font: bold 14px "Barmeno BQ Regular";
 }
-
 
 .command-word {
   fill: yellow;
