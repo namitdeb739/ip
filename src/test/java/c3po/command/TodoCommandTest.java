@@ -39,10 +39,34 @@ public class TodoCommandTest extends InputOutputCommandTest {
     }
 
     /**
-     * Tests the execute method with tags.
+     * Tests the execute method with one tag.
      */
     @Test
-    public void execute_addsTodoTaskWithTags() {
+    public void execute_addsTodoTaskWithOneTag() {
+        TodoCommand todoCommand = new TodoCommand("read book #leisure");
+        todoCommand.execute(this.tasks, this.ui, this.storage);
+
+        assertEquals(1, this.tasks.size());
+        Task task = null;
+        try {
+            task = this.tasks.get(0);
+        } catch (TaskNotFoundException e) {
+            fail("Task not found: " + e.getMessage());
+        }
+        assertTrue(task instanceof Todo);
+        assertEquals("[T][ ] read book #leisure", task.toString());
+
+        String expectedOutput = "Very well, sir, I am now adding this task:\n"
+                + "[T][ ] read book #leisure\nNow you have 1 tasks in the list.\n"
+                + "____________________";
+        assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
+    }
+
+    /**
+     * Tests the execute method with multiple tags.
+     */
+    @Test
+    public void execute_addsTodoTaskWithMultipleTags() {
         TodoCommand todoCommand = new TodoCommand("read book #leisure #reading");
         todoCommand.execute(this.tasks, this.ui, this.storage);
 
@@ -57,7 +81,8 @@ public class TodoCommandTest extends InputOutputCommandTest {
         assertEquals("[T][ ] read book #leisure #reading", task.toString());
 
         String expectedOutput = "Very well, sir, I am now adding this task:\n"
-                + "[T][ ] read book #leisure #reading\nNow you have 1 tasks in the list.\n" + "____________________";
+                + "[T][ ] read book #leisure #reading\nNow you have 1 tasks in the list.\n"
+                + "____________________";
         assertEquals(expectedOutput, this.outputStreamCaptor.toString().trim());
     }
 }

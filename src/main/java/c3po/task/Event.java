@@ -45,8 +45,6 @@ public class Event extends Task {
     @Override
     public String toFileString() {
         return String.format("E | %d | %s | %s | %s%s", this.isDone ? 1 : 0, this.description,
-                this.from.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
-                this.to.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm")),
-                this.hasTags() ? String.format(" | %s", this.tagString()) : "");
+                this.from, this.to, this.hasTags() ? String.format(" | %s", this.tagString()) : "");
     }
 }
