@@ -1,3 +1,4 @@
+# Workflow taken from CS2103T website
 name: Java CI
 
 on: [push, pull_request]

@@ -76,6 +76,7 @@ public class Storage {
     public String saveTasks(TaskList tasks) {
         String savedTasks = "";
         try {
+            // Error handling aided by CoPilot
             if (!this.file.exists()) {
                 if (!this.file.getParentFile().exists()) {
                     this.file.getParentFile().mkdirs();
