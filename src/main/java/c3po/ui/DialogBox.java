@@ -12,7 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -101,7 +100,7 @@ public class DialogBox extends HBox {
      * Gets a dialog box for an error message from C3PO.
      *
      * @param response The response containing the error message.
-     * @param c3poImage The image to display.
+     * @param img The image to display.
      * @return The dialog box for the error message.
      */
     public static Node getC3POErrorMessage(Response response, Image img) {
