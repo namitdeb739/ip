@@ -1,7 +1,7 @@
 package c3po.task;
 
 /**
- * Represents a task that has no date/time attached to it.
+ * Represents a todo task.
  */
 public class Todo extends Task {
     /**
