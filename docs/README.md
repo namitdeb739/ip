@@ -10,6 +10,8 @@ This application allows you to manage tasks with various features:
 
 ### Adding Tasks
 
+You can add your tasks to C3PO. You can also tag your tasks by adding #\<tagname\>!
+
 #### Todo
 
 ```txt
